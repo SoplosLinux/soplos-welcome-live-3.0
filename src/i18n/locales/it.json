@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Riduci a icona",
+      "maximize": "Ingrandisci",
+      "restore": "Ripristina",
+      "close": "Chiudi"
+    },
+    "tabs": {
+      "home": { "label": "Home", "title": "Benvenuto" },
+      "install": { "label": "Installa", "title": "Installa Soplos Linux" },
+      "rescue": { "label": "Ripristino", "title": "Ripara il mio computer" },
+      "tools": { "label": "Strumenti", "title": "Strumenti" },
+      "language": { "label": "Lingua", "title": "Lingua e tastiera" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Mostra all'avvio",
+    "interfaceLanguage": "Lingua di questa finestra",
+    "switchToLight": "Passa al tema chiaro",
+    "switchToDark": "Passa al tema scuro",
+    "aboutTooltip": "Informazioni su Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Chiudi",
+    "cancel": "Annulla",
+    "ok": "OK",
+    "open": "Apri",
+    "retry": "Riprova",
+    "back": "Indietro",
+    "showDetails": "Mostra i dettagli",
+    "hideDetails": "Nascondi i dettagli",
+    "error": "Errore",
+    "unknown": "Sconosciuto"
+  },
+  "about": {
+    "version": "Versione {version}",
+    "tagline": "La schermata di benvenuto della sessione live di Soplos Linux",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Rilasciato sotto la GNU General Public License v3.0 o successiva"
+  },
+  "home": {
+    "title": "Benvenuto in Soplos Linux",
+    "description": "Sei in una sessione live: non viene installato né modificato nulla finché non lo decidi tu. Prova il sistema con calma, installalo quando vuoi o ripara uno che hai già.",
+    "install": "Installa Soplos",
+    "keepTrying": "Continua a provare",
+    "editions": {
+      "tyron": "Edizione Tyron · Xfce",
+      "tyson": "Edizione Tyson · Plasma",
+      "boro": "Edizione Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Processore",
+      "memory": "Memoria",
+      "graphics": "Grafica",
+      "storage": "Archiviazione"
+    },
+    "cards": {
+      "install": {
+        "title": "Installa",
+        "description": "Installa Soplos su questo computer. Puoi conservare ciò che hai o ripartire da zero.",
+        "badge": "Pronto",
+        "action": "Inizia"
+      },
+      "rescue": {
+        "title": "Ripara",
+        "description": "Se il computer non si avvia o hai dimenticato la password, qui si risolve senza conoscere alcun comando.",
+        "action": "Ripara"
+      },
+      "tools": {
+        "title": "Strumenti",
+        "description": "Partiziona i dischi, guarda il tuo hardware e regola lo schermo di questa sessione.",
+        "action": "Apri"
+      }
+    },
+    "links": {
+      "web": "Sito web",
+      "forums": "Forum",
+      "wiki": "Wiki",
+      "donate": "Dona"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Programma di installazione {name}",
+      "description": "Ti guida attraverso la lingua, i dischi e il tuo utente. Prima di cambiare qualsiasi cosa mostra un riepilogo e chiede conferma."
+    },
+    "checks": {
+      "title": "Prima di iniziare",
+      "internet": "Connessione a internet",
+      "internetOn": "Connesso",
+      "internetOff": "Non connesso",
+      "uefi": "Modalità di avvio",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (legacy)",
+      "disk": "Dischi",
+      "diskNone": "Nessun disco trovato",
+      "power": "Alimentazione",
+      "powerOk": "Collegato alla corrente",
+      "powerBattery": "A batteria: collega il caricabatterie"
+    },
+    "start": "Installa Soplos",
+    "starting": "Avvio del programma di installazione",
+    "notFound": {
+      "title": "Programma di installazione non trovato",
+      "message": "Il programma di installazione {name} non è stato trovato. Installalo o esegui l'installazione a mano."
+    }
+  },
+  "rescue": {
+    "question": "Cosa è successo?",
+    "advanced": "Avanzate: apri un terminale in un sistema installato",
+    "scanning": "Ricerca dei sistemi installati",
+    "scanningHint": "Ci vogliono pochi secondi.",
+    "foundOne": "Abbiamo trovato questo sistema",
+    "chooseSystem": "Quale vuoi riparare?",
+    "reboot": "Riavvia ora",
+    "problems": {
+      "boot": {
+        "title": "Il mio computer non si avvia",
+        "description": "Schermo nero o un errore all'accensione"
+      },
+      "password": {
+        "title": "Ho dimenticato la password",
+        "description": "Scegli un utente e imposta una nuova password"
+      },
+      "update": {
+        "title": "Si è rotto dopo un aggiornamento",
+        "description": "Ricostruisce ciò che serve per avviarsi di nuovo"
+      }
+    },
+    "none": {
+      "title": "Nessun sistema installato trovato",
+      "message": "Non è stato trovato alcun sistema Linux sui dischi di questo computer. Controlla che il disco sia collegato e riprova."
+    },
+    "form": {
+      "user": "Utente",
+      "password": "Nuova password",
+      "repeat": "Ripeti la password",
+      "empty": "Scrivi la nuova password.",
+      "mismatch": "Le password non coincidono."
+    },
+    "action": {
+      "boot": "Ripara ora",
+      "password": "Cambia la password",
+      "update": "Ripara ora",
+      "terminal": "Apri il terminale"
+    },
+    "steps": {
+      "mount": "Montaggio del sistema",
+      "grub_install": "Riparazione del bootloader",
+      "update_grub": "Aggiornamento delle voci di avvio",
+      "initramfs": "Ricostruzione dei file di avvio",
+      "password": "Salvataggio della nuova password",
+      "unmount": "Chiusura del sistema"
+    },
+    "working": {
+      "boot": "Riparazione dell'avvio del tuo computer",
+      "password": "Cambio della password",
+      "update": "Riparazione dopo l'aggiornamento",
+      "terminal": "Preparazione del terminale"
+    },
+    "done": {
+      "boot": {
+        "title": "Fatto, il tuo computer può avviarsi di nuovo",
+        "message": "Riavvia e rimuovi questa chiavetta USB quando il computer si spegne."
+      },
+      "password": {
+        "title": "Password cambiata",
+        "message": "Ora puoi accedere con la nuova password."
+      },
+      "update": {
+        "title": "Fatto, il sistema è stato riparato",
+        "message": "Riavvia e rimuovi questa chiavetta USB quando il computer si spegne."
+      }
+    },
+    "terminal": {
+      "title": "Terminale di ripristino del sistema installato",
+      "exit": "Scrivi exit o premi Ctrl+D per uscire",
+      "cleanup": "Chiusura del sistema",
+      "done": "Fatto"
+    },
+    "terminalOpen": {
+      "title": "Il terminale è aperto",
+      "message": "Il sistema si chiude da solo quando esci dal terminale."
+    },
+    "failed": {
+      "title": "Non è stato possibile riparare",
+      "message": "Qualcosa è andato storto e nulla è rimasto a metà. I dettagli qui sotto dicono cosa è fallito."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Crea, sposta ed elimina partizioni prima di installare.",
+      "error": "Impossibile aprire GParted: {error}"
+    },
+    "hardware": {
+      "title": "Informazioni sull'hardware",
+      "description": "Processore, memoria e dischi di questo computer.",
+      "view": "Vedi",
+      "cpu": "Processore",
+      "memory": "Memoria",
+      "storage": "Archiviazione"
+    },
+    "resolution": {
+      "title": "Risoluzione dello schermo",
+      "description": "Cambia solo questa sessione live.",
+      "error": "Non è stato possibile cambiarla.",
+      "unsupported": "Non ancora disponibile su questo desktop."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Attiva NumLock nel sistema installato. Meglio disattivarlo sui portatili senza tastierino numerico.",
+      "badge": "All'installazione",
+      "enabledTitle": "NumLock attivato",
+      "enabledText": "NumLock verrà attivato automaticamente nel sistema installato.",
+      "disabledTitle": "NumLock disattivato",
+      "disabledText": "NumLock non verrà attivato nel sistema installato.\nConsigliato sui portatili senza tastierino numerico."
+    }
+  },
+  "language": {
+    "description": "Cambia la lingua e la disposizione della tastiera del sistema. La sessione si riavvia da sola per applicarle.",
+    "languages": "Lingua",
+    "keyboard": "Tastiera",
+    "keyboardHint": "Segue la lingua che scegli, ma puoi cambiarla separatamente.",
+    "apply": "Applica e riavvia la sessione",
+    "restartNote": "Salva ciò che hai aperto: la sessione si chiude e si riapre.",
+    "steps": {
+      "locale": "Configurazione della lingua",
+      "user": "Applicazione delle tue impostazioni",
+      "xdg": "Spostamento delle tue cartelle",
+      "bookmarks": "Aggiornamento dei segnalibri",
+      "restart": "Riavvio della sessione"
+    }
+  }
+}

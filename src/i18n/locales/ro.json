@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Minimizează",
+      "maximize": "Maximizează",
+      "restore": "Restaurează",
+      "close": "Închide"
+    },
+    "tabs": {
+      "home": { "label": "Acasă", "title": "Bun venit" },
+      "install": { "label": "Instalare", "title": "Instalează Soplos Linux" },
+      "rescue": { "label": "Salvare", "title": "Repară computerul meu" },
+      "tools": { "label": "Instrumente", "title": "Instrumente" },
+      "language": { "label": "Limbă", "title": "Limbă și tastatură" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Afișează la pornire",
+    "interfaceLanguage": "Limba acestei ferestre",
+    "switchToLight": "Treci la tema deschisă",
+    "switchToDark": "Treci la tema întunecată",
+    "aboutTooltip": "Despre Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Închide",
+    "cancel": "Anulează",
+    "ok": "OK",
+    "open": "Deschide",
+    "retry": "Încearcă din nou",
+    "back": "Înapoi",
+    "showDetails": "Arată detaliile",
+    "hideDetails": "Ascunde detaliile",
+    "error": "Eroare",
+    "unknown": "Necunoscut"
+  },
+  "about": {
+    "version": "Versiunea {version}",
+    "tagline": "Ecranul de bun venit al sesiunii live Soplos Linux",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Licențiat sub Licența Publică Generală GNU v3.0 sau ulterioară"
+  },
+  "home": {
+    "title": "Bun venit la Soplos Linux",
+    "description": "Ești într-o sesiune live: nu se instalează și nu se schimbă nimic până nu decizi tu. Încearcă sistemul cu calm, instalează-l când vrei sau repară unul pe care îl ai deja.",
+    "install": "Instalează Soplos",
+    "keepTrying": "Continuă să încerci",
+    "editions": {
+      "tyron": "Ediția Tyron · Xfce",
+      "tyson": "Ediția Tyson · Plasma",
+      "boro": "Ediția Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Procesor",
+      "memory": "Memorie",
+      "graphics": "Placă grafică",
+      "storage": "Stocare"
+    },
+    "cards": {
+      "install": {
+        "title": "Instalare",
+        "description": "Instalează Soplos pe acest computer. Poți păstra ce ai sau poți începe de la zero.",
+        "badge": "Gata",
+        "action": "Începe"
+      },
+      "rescue": {
+        "title": "Reparare",
+        "description": "Dacă computerul nu pornește sau ai uitat parola, se rezolvă aici fără să știi comenzi.",
+        "action": "Repară"
+      },
+      "tools": {
+        "title": "Instrumente",
+        "description": "Partiționează discuri, vezi hardware-ul și ajustează ecranul acestei sesiuni.",
+        "action": "Deschide"
+      }
+    },
+    "links": {
+      "web": "Web",
+      "forums": "Forumuri",
+      "wiki": "Wiki",
+      "donate": "Donează"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Programul de instalare {name}",
+      "description": "Te ghidează prin limbă, discuri și utilizatorul tău. Înainte să schimbe ceva, arată un rezumat și cere confirmare."
+    },
+    "checks": {
+      "title": "Înainte de a începe",
+      "internet": "Conexiune la internet",
+      "internetOn": "Conectat",
+      "internetOff": "Neconectat",
+      "uefi": "Mod de pornire",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (vechi)",
+      "disk": "Discuri",
+      "diskNone": "Nu s-a găsit niciun disc",
+      "power": "Alimentare",
+      "powerOk": "Conectat la priză",
+      "powerBattery": "Pe baterie: conectează încărcătorul"
+    },
+    "start": "Instalează Soplos",
+    "starting": "Se pornește programul de instalare",
+    "notFound": {
+      "title": "Programul de instalare nu a fost găsit",
+      "message": "Programul de instalare {name} nu a fost găsit. Instalează-l sau rulează instalarea manual."
+    }
+  },
+  "rescue": {
+    "question": "Ce s-a întâmplat?",
+    "advanced": "Avansat: deschide un terminal într-un sistem instalat",
+    "scanning": "Se caută sisteme instalate",
+    "scanningHint": "Durează câteva secunde.",
+    "foundOne": "Am găsit acest sistem",
+    "chooseSystem": "Pe care vrei să îl repari?",
+    "reboot": "Repornește acum",
+    "problems": {
+      "boot": {
+        "title": "Computerul meu nu pornește",
+        "description": "Ecran negru sau o eroare la pornire"
+      },
+      "password": {
+        "title": "Am uitat parola",
+        "description": "Alege un utilizator și setează una nouă"
+      },
+      "update": {
+        "title": "S-a stricat după o actualizare",
+        "description": "Reconstruiește ce este necesar pentru a porni din nou"
+      }
+    },
+    "none": {
+      "title": "Nu s-a găsit niciun sistem instalat",
+      "message": "Nu s-a găsit niciun sistem Linux pe discurile acestui computer. Verifică dacă discul este conectat și încearcă din nou."
+    },
+    "form": {
+      "user": "Utilizator",
+      "password": "Parolă nouă",
+      "repeat": "Repetă parola",
+      "empty": "Scrie parola nouă.",
+      "mismatch": "Parolele nu coincid."
+    },
+    "action": {
+      "boot": "Repară acum",
+      "password": "Schimbă parola",
+      "update": "Repară acum",
+      "terminal": "Deschide terminalul"
+    },
+    "steps": {
+      "mount": "Se montează sistemul",
+      "grub_install": "Se repară încărcătorul de pornire",
+      "update_grub": "Se actualizează intrările de pornire",
+      "initramfs": "Se reconstruiesc fișierele de pornire",
+      "password": "Se salvează parola nouă",
+      "unmount": "Se închide sistemul"
+    },
+    "working": {
+      "boot": "Se repară pornirea computerului",
+      "password": "Se schimbă parola",
+      "update": "Se repară după actualizare",
+      "terminal": "Se pregătește terminalul"
+    },
+    "done": {
+      "boot": {
+        "title": "Gata, computerul poate porni din nou",
+        "message": "Repornește și scoate acest stick USB când computerul se oprește."
+      },
+      "password": {
+        "title": "Parola a fost schimbată",
+        "message": "Acum te poți autentifica cu parola nouă."
+      },
+      "update": {
+        "title": "Gata, sistemul a fost reparat",
+        "message": "Repornește și scoate acest stick USB când computerul se oprește."
+      }
+    },
+    "terminal": {
+      "title": "Terminal de recuperare al sistemului instalat",
+      "exit": "Scrie exit sau apasă Ctrl+D pentru a ieși",
+      "cleanup": "Se închide sistemul",
+      "done": "Gata"
+    },
+    "terminalOpen": {
+      "title": "Terminalul este deschis",
+      "message": "Sistemul se închide singur când ieși din terminal."
+    },
+    "failed": {
+      "title": "Nu s-a putut repara",
+      "message": "Ceva a eșuat și nimic nu a rămas pe jumătate. Detaliile de mai jos arată ce a eșuat."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Creează, mută și șterge partiții înainte de instalare.",
+      "error": "GParted nu a putut fi deschis: {error}"
+    },
+    "hardware": {
+      "title": "Informații despre hardware",
+      "description": "Procesorul, memoria și discurile acestui computer.",
+      "view": "Vezi",
+      "cpu": "Procesor",
+      "memory": "Memorie",
+      "storage": "Stocare"
+    },
+    "resolution": {
+      "title": "Rezoluția ecranului",
+      "description": "Schimbă doar această sesiune live.",
+      "error": "Nu s-a putut schimba.",
+      "unsupported": "Încă indisponibil pe acest desktop."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Activează NumLock în sistemul instalat. Este mai bine să fie dezactivat pe laptopuri fără tastatură numerică.",
+      "badge": "La instalare",
+      "enabledTitle": "NumLock activat",
+      "enabledText": "NumLock va fi activat automat în sistemul instalat.",
+      "disabledTitle": "NumLock dezactivat",
+      "disabledText": "NumLock nu va fi activat în sistemul instalat.\nRecomandat pentru laptopuri fără tastatură numerică."
+    }
+  },
+  "language": {
+    "description": "Schimbă limba și aranjamentul tastaturii sistemului. Sesiunea repornește singură pentru a le aplica.",
+    "languages": "Limbă",
+    "keyboard": "Tastatură",
+    "keyboardHint": "Urmează limba aleasă, dar o poți schimba separat.",
+    "apply": "Aplică și repornește sesiunea",
+    "restartNote": "Salvează ce ai deschis: sesiunea se închide și se deschide din nou.",
+    "steps": {
+      "locale": "Se configurează limba",
+      "user": "Se aplică setările tale",
+      "xdg": "Se mută folderele tale",
+      "bookmarks": "Se actualizează marcajele",
+      "restart": "Se repornește sesiunea"
+    }
+  }
+}

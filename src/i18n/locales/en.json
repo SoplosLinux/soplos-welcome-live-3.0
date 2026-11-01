@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Minimize",
+      "maximize": "Maximize",
+      "restore": "Restore",
+      "close": "Close"
+    },
+    "tabs": {
+      "home": { "label": "Home", "title": "Welcome" },
+      "install": { "label": "Install", "title": "Install Soplos Linux" },
+      "rescue": { "label": "Rescue", "title": "Repair my computer" },
+      "tools": { "label": "Tools", "title": "Tools" },
+      "language": { "label": "Language", "title": "Language and keyboard" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Show at startup",
+    "interfaceLanguage": "Language of this window",
+    "switchToLight": "Switch to the light theme",
+    "switchToDark": "Switch to the dark theme",
+    "aboutTooltip": "About Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "open": "Open",
+    "retry": "Try again",
+    "back": "Back",
+    "showDetails": "Show details",
+    "hideDetails": "Hide details",
+    "error": "Error",
+    "unknown": "Unknown"
+  },
+  "about": {
+    "version": "Version {version}",
+    "tagline": "The welcome screen of the Soplos Linux live session",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Licensed under the GNU General Public License v3.0 or later"
+  },
+  "home": {
+    "title": "Welcome to Soplos Linux",
+    "description": "You are in a live session: nothing is installed or changed until you decide. Try the system at your own pace, install it when you are ready, or repair one you already have.",
+    "install": "Install Soplos",
+    "keepTrying": "Keep trying it",
+    "editions": {
+      "tyron": "Tyron edition · Xfce",
+      "tyson": "Tyson edition · Plasma",
+      "boro": "Boro edition · GNOME"
+    },
+    "system": {
+      "cpu": "Processor",
+      "memory": "Memory",
+      "graphics": "Graphics",
+      "storage": "Storage"
+    },
+    "cards": {
+      "install": {
+        "title": "Install",
+        "description": "Install Soplos on this computer. You can keep what you have or start from scratch.",
+        "badge": "Ready",
+        "action": "Start"
+      },
+      "rescue": {
+        "title": "Repair",
+        "description": "If your computer does not start or you forgot the password, it is fixed here without knowing any command.",
+        "action": "Repair"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Partition disks, see your hardware and adjust the screen of this session.",
+        "action": "Open"
+      }
+    },
+    "links": {
+      "web": "Web",
+      "forums": "Forums",
+      "wiki": "Wiki",
+      "donate": "Donate"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "{name} installer",
+      "description": "It guides you through the language, the disks and your user. Before it changes anything it shows a summary and asks you to confirm."
+    },
+    "checks": {
+      "title": "Before you start",
+      "internet": "Internet connection",
+      "internetOn": "Connected",
+      "internetOff": "Not connected",
+      "uefi": "Boot mode",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (legacy)",
+      "disk": "Disks",
+      "diskNone": "No disk found",
+      "power": "Power",
+      "powerOk": "Plugged in",
+      "powerBattery": "On battery: plug in the charger"
+    },
+    "start": "Install Soplos",
+    "starting": "Starting the installer",
+    "notFound": {
+      "title": "Installer not found",
+      "message": "The {name} installer could not be found. Install it or run the installation manually."
+    }
+  },
+  "rescue": {
+    "question": "What happened?",
+    "advanced": "Advanced: open a terminal in an installed system",
+    "scanning": "Looking for installed systems",
+    "scanningHint": "This takes a few seconds.",
+    "foundOne": "We found this system",
+    "chooseSystem": "Which one do you want to repair?",
+    "reboot": "Restart now",
+    "problems": {
+      "boot": {
+        "title": "My computer does not start",
+        "description": "Black screen or an error when turning it on"
+      },
+      "password": {
+        "title": "I forgot my password",
+        "description": "Choose a user and set a new password"
+      },
+      "update": {
+        "title": "It broke after an update",
+        "description": "Rebuilds what is needed to start again"
+      }
+    },
+    "none": {
+      "title": "No installed system found",
+      "message": "No Linux system was found on the disks of this computer. Check that the disk is connected and try again."
+    },
+    "form": {
+      "user": "User",
+      "password": "New password",
+      "repeat": "Repeat the password",
+      "empty": "Write the new password.",
+      "mismatch": "The passwords do not match."
+    },
+    "action": {
+      "boot": "Repair now",
+      "password": "Change the password",
+      "update": "Repair now",
+      "terminal": "Open the terminal"
+    },
+    "steps": {
+      "mount": "Mounting the system",
+      "grub_install": "Repairing the boot loader",
+      "update_grub": "Updating the boot entries",
+      "initramfs": "Rebuilding the start files",
+      "password": "Saving the new password",
+      "unmount": "Closing the system"
+    },
+    "working": {
+      "boot": "Repairing the start of your computer",
+      "password": "Changing the password",
+      "update": "Repairing after the update",
+      "terminal": "Preparing the terminal"
+    },
+    "done": {
+      "boot": {
+        "title": "Done, your computer can start again",
+        "message": "Restart and remove this USB when the computer turns off."
+      },
+      "password": {
+        "title": "Password changed",
+        "message": "You can now sign in with the new password."
+      },
+      "update": {
+        "title": "Done, the system was repaired",
+        "message": "Restart and remove this USB when the computer turns off."
+      }
+    },
+    "terminal": {
+      "title": "Recovery terminal of the installed system",
+      "exit": "Type exit or press Ctrl+D to leave",
+      "cleanup": "Closing the system",
+      "done": "Done"
+    },
+    "terminalOpen": {
+      "title": "The terminal is open",
+      "message": "The system closes by itself when you leave the terminal."
+    },
+    "failed": {
+      "title": "It could not be repaired",
+      "message": "Something went wrong and nothing was left half done. The details below say what failed."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Create, move and delete partitions before installing.",
+      "error": "GParted could not be opened: {error}"
+    },
+    "hardware": {
+      "title": "Hardware information",
+      "description": "Processor, memory and disks of this computer.",
+      "view": "View",
+      "cpu": "Processor",
+      "memory": "Memory",
+      "storage": "Storage"
+    },
+    "resolution": {
+      "title": "Screen resolution",
+      "description": "It only changes this live session.",
+      "error": "It could not be changed.",
+      "unsupported": "Not available on this desktop yet."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Turn NumLock on in the installed system. It is better off on laptops without a numeric keypad.",
+      "badge": "On install",
+      "enabledTitle": "NumLock on",
+      "enabledText": "NumLock will be turned on automatically in the installed system.",
+      "disabledTitle": "NumLock off",
+      "disabledText": "NumLock will not be turned on in the installed system.\nRecommended for laptops without a numeric keypad."
+    }
+  },
+  "language": {
+    "description": "Change the language and the keyboard layout of the system. The session restarts by itself to apply them.",
+    "languages": "Language",
+    "keyboard": "Keyboard",
+    "keyboardHint": "It follows the language you choose, but you can change it on its own.",
+    "apply": "Apply and restart the session",
+    "restartNote": "Save what you have open: the session closes and opens again.",
+    "steps": {
+      "locale": "Configuring the language",
+      "user": "Applying your settings",
+      "xdg": "Moving your folders",
+      "bookmarks": "Updating the bookmarks",
+      "restart": "Restarting the session"
+    }
+  }
+}

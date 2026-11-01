@@ -1,0 +1,12 @@
+{
+  "name": "Calamares",
+  "paths": [
+    "/usr/bin/calamares",
+    "/usr/local/bin/calamares",
+    "/usr/bin/calamares-qt5"
+  ],
+  "env": {
+    "QT_STYLE_OVERRIDE": "fusion"
+  },
+  "needs_root": true
+}

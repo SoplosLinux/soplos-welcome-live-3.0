@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Minimizar",
+      "maximize": "Maximizar",
+      "restore": "Restaurar",
+      "close": "Fechar"
+    },
+    "tabs": {
+      "home": { "label": "Início", "title": "Boas-vindas" },
+      "install": { "label": "Instalar", "title": "Instalar o Soplos Linux" },
+      "rescue": { "label": "Resgate", "title": "Reparar o meu computador" },
+      "tools": { "label": "Ferramentas", "title": "Ferramentas" },
+      "language": { "label": "Idioma", "title": "Idioma e teclado" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Mostrar ao iniciar",
+    "interfaceLanguage": "Idioma desta janela",
+    "switchToLight": "Mudar para o tema claro",
+    "switchToDark": "Mudar para o tema escuro",
+    "aboutTooltip": "Sobre o Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Fechar",
+    "cancel": "Cancelar",
+    "ok": "OK",
+    "open": "Abrir",
+    "retry": "Tentar novamente",
+    "back": "Voltar",
+    "showDetails": "Ver detalhes",
+    "hideDetails": "Ocultar detalhes",
+    "error": "Erro",
+    "unknown": "Desconhecido"
+  },
+  "about": {
+    "version": "Versão {version}",
+    "tagline": "O ecrã de boas-vindas da sessão live do Soplos Linux",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Licenciado sob a Licença Pública Geral GNU v3.0 ou posterior"
+  },
+  "home": {
+    "title": "Bem-vindo ao Soplos Linux",
+    "description": "Está numa sessão live: nada é instalado nem alterado até decidir. Experimente o sistema com calma, instale-o quando quiser ou repare um que já tenha.",
+    "install": "Instalar o Soplos",
+    "keepTrying": "Continuar a experimentar",
+    "editions": {
+      "tyron": "Edição Tyron · Xfce",
+      "tyson": "Edição Tyson · Plasma",
+      "boro": "Edição Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Processador",
+      "memory": "Memória",
+      "graphics": "Gráfica",
+      "storage": "Armazenamento"
+    },
+    "cards": {
+      "install": {
+        "title": "Instalar",
+        "description": "Instale o Soplos neste computador. Pode manter o que tem ou começar do zero.",
+        "badge": "Pronto",
+        "action": "Começar"
+      },
+      "rescue": {
+        "title": "Reparar",
+        "description": "Se o computador não arranca ou esqueceu a palavra-passe, resolve-se aqui sem saber comandos.",
+        "action": "Reparar"
+      },
+      "tools": {
+        "title": "Ferramentas",
+        "description": "Particione discos, veja o seu hardware e ajuste o ecrã desta sessão.",
+        "action": "Abrir"
+      }
+    },
+    "links": {
+      "web": "Web",
+      "forums": "Fóruns",
+      "wiki": "Wiki",
+      "donate": "Doar"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Instalador {name}",
+      "description": "Guia-o pelo idioma, pelos discos e pelo seu utilizador. Antes de alterar seja o que for, mostra um resumo e pede confirmação."
+    },
+    "checks": {
+      "title": "Antes de começar",
+      "internet": "Ligação à internet",
+      "internetOn": "Ligado",
+      "internetOff": "Sem ligação",
+      "uefi": "Modo de arranque",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (legado)",
+      "disk": "Discos",
+      "diskNone": "Nenhum disco encontrado",
+      "power": "Energia",
+      "powerOk": "Ligado à corrente",
+      "powerBattery": "Com bateria: ligue o carregador"
+    },
+    "start": "Instalar o Soplos",
+    "starting": "A iniciar o instalador",
+    "notFound": {
+      "title": "Instalador não encontrado",
+      "message": "O instalador {name} não foi encontrado. Instale-o ou execute a instalação manualmente."
+    }
+  },
+  "rescue": {
+    "question": "O que aconteceu?",
+    "advanced": "Avançado: abrir um terminal num sistema instalado",
+    "scanning": "A procurar sistemas instalados",
+    "scanningHint": "Demora alguns segundos.",
+    "foundOne": "Encontrámos este sistema",
+    "chooseSystem": "Qual quer reparar?",
+    "reboot": "Reiniciar agora",
+    "problems": {
+      "boot": {
+        "title": "O meu computador não arranca",
+        "description": "Ecrã preto ou um erro ao ligar"
+      },
+      "password": {
+        "title": "Esqueci a minha palavra-passe",
+        "description": "Escolha um utilizador e defina uma nova"
+      },
+      "update": {
+        "title": "Avariou depois de uma atualização",
+        "description": "Reconstrói o necessário para voltar a arrancar"
+      }
+    },
+    "none": {
+      "title": "Nenhum sistema instalado encontrado",
+      "message": "Não foi encontrado nenhum sistema Linux nos discos deste computador. Verifique se o disco está ligado e tente novamente."
+    },
+    "form": {
+      "user": "Utilizador",
+      "password": "Nova palavra-passe",
+      "repeat": "Repita a palavra-passe",
+      "empty": "Escreva a nova palavra-passe.",
+      "mismatch": "As palavras-passe não coincidem."
+    },
+    "action": {
+      "boot": "Reparar agora",
+      "password": "Alterar a palavra-passe",
+      "update": "Reparar agora",
+      "terminal": "Abrir o terminal"
+    },
+    "steps": {
+      "mount": "A montar o sistema",
+      "grub_install": "A reparar o gestor de arranque",
+      "update_grub": "A atualizar as entradas de arranque",
+      "initramfs": "A reconstruir os ficheiros de arranque",
+      "password": "A guardar a nova palavra-passe",
+      "unmount": "A fechar o sistema"
+    },
+    "working": {
+      "boot": "A reparar o arranque do seu computador",
+      "password": "A alterar a palavra-passe",
+      "update": "A reparar após a atualização",
+      "terminal": "A preparar o terminal"
+    },
+    "done": {
+      "boot": {
+        "title": "Pronto, o seu computador já pode arrancar",
+        "message": "Reinicie e retire esta pen USB quando o computador se desligar."
+      },
+      "password": {
+        "title": "Palavra-passe alterada",
+        "message": "Já pode iniciar sessão com a nova palavra-passe."
+      },
+      "update": {
+        "title": "Pronto, o sistema foi reparado",
+        "message": "Reinicie e retire esta pen USB quando o computador se desligar."
+      }
+    },
+    "terminal": {
+      "title": "Terminal de recuperação do sistema instalado",
+      "exit": "Escreva exit ou prima Ctrl+D para sair",
+      "cleanup": "A fechar o sistema",
+      "done": "Pronto"
+    },
+    "terminalOpen": {
+      "title": "O terminal está aberto",
+      "message": "O sistema fecha-se sozinho quando sair do terminal."
+    },
+    "failed": {
+      "title": "Não foi possível reparar",
+      "message": "Algo falhou e nada ficou a meio. Os detalhes abaixo dizem o que falhou."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Crie, mova e apague partições antes de instalar.",
+      "error": "Não foi possível abrir o GParted: {error}"
+    },
+    "hardware": {
+      "title": "Informações do hardware",
+      "description": "Processador, memória e discos deste computador.",
+      "view": "Ver",
+      "cpu": "Processador",
+      "memory": "Memória",
+      "storage": "Armazenamento"
+    },
+    "resolution": {
+      "title": "Resolução do ecrã",
+      "description": "Altera apenas esta sessão live.",
+      "error": "Não foi possível alterar.",
+      "unsupported": "Ainda não disponível neste ambiente de trabalho."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Ativa o NumLock no sistema instalado. Convém desativá-lo em portáteis sem teclado numérico.",
+      "badge": "Ao instalar",
+      "enabledTitle": "NumLock ativado",
+      "enabledText": "O NumLock será ativado automaticamente no sistema instalado.",
+      "disabledTitle": "NumLock desativado",
+      "disabledText": "O NumLock não será ativado no sistema instalado.\nRecomendado em portáteis sem teclado numérico."
+    }
+  },
+  "language": {
+    "description": "Altere o idioma e a disposição do teclado do sistema. A sessão reinicia-se sozinha para os aplicar.",
+    "languages": "Idioma",
+    "keyboard": "Teclado",
+    "keyboardHint": "Segue o idioma que escolher, mas pode alterá-lo em separado.",
+    "apply": "Aplicar e reiniciar a sessão",
+    "restartNote": "Guarde o que tem aberto: a sessão fecha-se e volta a abrir-se.",
+    "steps": {
+      "locale": "A configurar o idioma",
+      "user": "A aplicar as suas definições",
+      "xdg": "A mover as suas pastas",
+      "bookmarks": "A atualizar os marcadores",
+      "restart": "A reiniciar a sessão"
+    }
+  }
+}

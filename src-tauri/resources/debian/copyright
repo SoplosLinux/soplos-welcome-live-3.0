@@ -1,0 +1,84 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: soplos-welcome
+Source: https://github.com/SoplosLinux/soplos-welcome-3.0
+
+Files: *
+Copyright: 2026 Sergi Perich <info@soploslinux.com>
+License: GPL-3.0+
+
+Files: node_modules/lucide-svelte/*
+Copyright: 2013-2022 Cole Bemis
+ 2022 Lucide Contributors
+License: ISC
+Comment: Icons from Lucide (lucide-svelte 0.469.0), embedded in the frontend.
+
+Files: src-tauri/resources/davinci/makeresolvedeb_1.10.1_multi.sh
+Copyright: Daniel Tufvesson
+License: other-makeresolvedeb
+Comment: DaVinci Resolve Multi Debian package creator, release 2026-09-10,
+ by Daniel Tufvesson. Included unmodified. The Soplos helper scripts that
+ accompany it (virtual microphone and iGPU OpenCL setup) are original work
+ of Sergi Perich, found in src-tauri/src/commands/davinci.rs and covered by
+ the GPL-3.0+ stanza above.
+
+Files: src-tauri/resources/vbox/VBoxLinuxAdditions.run
+Copyright: Oracle and/or its affiliates
+License: GPL-3
+Comment: VirtualBox 7.2.10 Guest Additions for Linux, redistributed
+ unmodified from Oracle. Some components carry other licenses, as stated
+ by Oracle in the archive.
+
+Files: src-tauri/resources/appimage-icons/*
+Copyright: their respective owners
+License: other-trademarks
+Comment: Logos of Affinity, Audacity, CoolerControl, Double Commander,
+ ES-DE and WhatsApp, used only to identify those applications.
+
+Files: src-tauri/resources/vmware/soplos-vmware-modules_1.0.0_amd64.deb
+Copyright: 2026 Sergi Perich <info@soploslinux.com>
+License: GPL-3.0+
+Comment: Soplos build and kernel-hook scripts only. It contains no VMware
+ code: vmmon and vmnet are built from the sources of the VMware Workstation
+ installed on the user's system.
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: GPL-3
+ On Debian systems, the complete text of the GNU General Public License
+ version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: other-makeresolvedeb
+ Distributed by its author without a license statement. All rights remain
+ with Daniel Tufvesson.
+
+License: other-trademarks
+ The logos are trademarks or artwork of their respective owners and are not
+ covered by the GPL-3.0+ license of this package.

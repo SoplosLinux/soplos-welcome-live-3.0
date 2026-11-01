@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Soplos's own light/dark theme, independent of the desktop environment's
+ * theme (GTK/Qt) — see the 3.0 technical report, section on visual identity.
+ * Each Tailwind color below reads its RGB channels from these variables so
+ * opacity modifiers (bg-primary/15, etc.) keep working. Defaults are the
+ * dark theme; :root.light overrides them. Toggled by lib/theme.ts.
+ */
+:root {
+  --color-dark: 37 37 39;
+  --color-panel: 30 30 32;
+  --color-surface: 44 44 46;
+  --color-surface-2: 53 53 56;
+  --color-border: 61 61 64;
+  --color-text: 192 192 192;
+  --color-text-bright: 255 255 255;
+  --color-text-muted: 136 136 136;
+}
+
+:root.light {
+  --color-dark: 245 245 245;
+  --color-panel: 255 255 255;
+  --color-surface: 255 255 255;
+  --color-surface-2: 232 232 232;
+  --color-border: 208 208 208;
+  --color-text: 71 85 105;
+  --color-text-bright: 44 62 80;
+  --color-text-muted: 107 114 128;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* The background is the one of the window card (App.svelte): the body stays
+       transparent so the corners of a window with no frame can be rounded. */
+    background: transparent;
+    color: theme("colors.text.DEFAULT");
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+/*
+ * The window when the system draws no frame: one card with rounded corners.
+ * clip-path also cuts the dialogs (position: fixed), which overflow does not.
+ */
+.window-card {
+  border-radius: 12px;
+  border: 1px solid rgb(var(--color-border));
+  clip-path: inset(0 round 12px);
+}
+
+.content-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.primary.DEFAULT") transparent;
+}
+
+.content-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-scroll::-webkit-scrollbar-thumb {
+  background: theme("colors.primary.DEFAULT");
+  border-radius: 8px;
+}
+
+.content-scroll::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.primary.hover");
+}
+
+/* Indeterminate sliding progress bar - compatible with WebKitGTK and VMware software rendering */
+@keyframes progress-slide {
+  0% {
+    left: -35%;
+    width: 35%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    left: 100%;
+    width: 35%;
+  }
+}
+
+@-webkit-keyframes progress-slide {
+  0% {
+    left: -35%;
+    width: 35%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    left: 100%;
+    width: 35%;
+  }
+}
+
+.progress-fill {
+  position: relative !important;
+  -webkit-animation: progress-slide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+  animation: progress-slide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+}

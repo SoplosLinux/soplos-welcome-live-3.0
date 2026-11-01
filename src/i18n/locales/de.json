@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Minimieren",
+      "maximize": "Maximieren",
+      "restore": "Wiederherstellen",
+      "close": "Schließen"
+    },
+    "tabs": {
+      "home": { "label": "Start", "title": "Willkommen" },
+      "install": { "label": "Installieren", "title": "Soplos Linux installieren" },
+      "rescue": { "label": "Rettung", "title": "Meinen Computer reparieren" },
+      "tools": { "label": "Werkzeuge", "title": "Werkzeuge" },
+      "language": { "label": "Sprache", "title": "Sprache und Tastatur" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Beim Start anzeigen",
+    "interfaceLanguage": "Sprache dieses Fensters",
+    "switchToLight": "Zum hellen Design wechseln",
+    "switchToDark": "Zum dunklen Design wechseln",
+    "aboutTooltip": "Über Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "ok": "OK",
+    "open": "Öffnen",
+    "retry": "Erneut versuchen",
+    "back": "Zurück",
+    "showDetails": "Details anzeigen",
+    "hideDetails": "Details ausblenden",
+    "error": "Fehler",
+    "unknown": "Unbekannt"
+  },
+  "about": {
+    "version": "Version {version}",
+    "tagline": "Der Willkommensbildschirm der Soplos-Linux-Live-Sitzung",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Lizenziert unter der GNU General Public License v3.0 oder später"
+  },
+  "home": {
+    "title": "Willkommen bei Soplos Linux",
+    "description": "Du bist in einer Live-Sitzung: Es wird nichts installiert oder geändert, bis du es entscheidest. Probiere das System in Ruhe aus, installiere es, wenn du soweit bist, oder repariere ein vorhandenes.",
+    "install": "Soplos installieren",
+    "keepTrying": "Weiter ausprobieren",
+    "editions": {
+      "tyron": "Edition Tyron · Xfce",
+      "tyson": "Edition Tyson · Plasma",
+      "boro": "Edition Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Prozessor",
+      "memory": "Arbeitsspeicher",
+      "graphics": "Grafik",
+      "storage": "Speicher"
+    },
+    "cards": {
+      "install": {
+        "title": "Installieren",
+        "description": "Installiere Soplos auf diesem Computer. Du kannst behalten, was du hast, oder von vorn beginnen.",
+        "badge": "Bereit",
+        "action": "Starten"
+      },
+      "rescue": {
+        "title": "Reparieren",
+        "description": "Wenn dein Computer nicht startet oder du das Passwort vergessen hast, wird das hier ohne Befehle behoben.",
+        "action": "Reparieren"
+      },
+      "tools": {
+        "title": "Werkzeuge",
+        "description": "Festplatten partitionieren, deine Hardware ansehen und den Bildschirm dieser Sitzung anpassen.",
+        "action": "Öffnen"
+      }
+    },
+    "links": {
+      "web": "Web",
+      "forums": "Foren",
+      "wiki": "Wiki",
+      "donate": "Spenden"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Installationsprogramm {name}",
+      "description": "Es führt dich durch Sprache, Festplatten und Benutzer. Bevor es etwas ändert, zeigt es eine Zusammenfassung und bittet um Bestätigung."
+    },
+    "checks": {
+      "title": "Bevor du beginnst",
+      "internet": "Internetverbindung",
+      "internetOn": "Verbunden",
+      "internetOff": "Nicht verbunden",
+      "uefi": "Startmodus",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (Legacy)",
+      "disk": "Festplatten",
+      "diskNone": "Keine Festplatte gefunden",
+      "power": "Stromversorgung",
+      "powerOk": "Am Netz",
+      "powerBattery": "Im Akkubetrieb: Ladegerät anschließen"
+    },
+    "start": "Soplos installieren",
+    "starting": "Installationsprogramm wird gestartet",
+    "notFound": {
+      "title": "Installationsprogramm nicht gefunden",
+      "message": "Das Installationsprogramm {name} wurde nicht gefunden. Installiere es oder führe die Installation manuell aus."
+    }
+  },
+  "rescue": {
+    "question": "Was ist passiert?",
+    "advanced": "Erweitert: Terminal in einem installierten System öffnen",
+    "scanning": "Installierte Systeme werden gesucht",
+    "scanningHint": "Das dauert einige Sekunden.",
+    "foundOne": "Wir haben dieses System gefunden",
+    "chooseSystem": "Welches möchtest du reparieren?",
+    "reboot": "Jetzt neu starten",
+    "problems": {
+      "boot": {
+        "title": "Mein Computer startet nicht",
+        "description": "Schwarzer Bildschirm oder ein Fehler beim Einschalten"
+      },
+      "password": {
+        "title": "Ich habe mein Passwort vergessen",
+        "description": "Wähle einen Benutzer und lege ein neues Passwort fest"
+      },
+      "update": {
+        "title": "Nach einem Update kaputt",
+        "description": "Baut neu auf, was zum Starten nötig ist"
+      }
+    },
+    "none": {
+      "title": "Kein installiertes System gefunden",
+      "message": "Auf den Festplatten dieses Computers wurde kein Linux-System gefunden. Prüfe, ob die Festplatte angeschlossen ist, und versuche es erneut."
+    },
+    "form": {
+      "user": "Benutzer",
+      "password": "Neues Passwort",
+      "repeat": "Passwort wiederholen",
+      "empty": "Gib das neue Passwort ein.",
+      "mismatch": "Die Passwörter stimmen nicht überein."
+    },
+    "action": {
+      "boot": "Jetzt reparieren",
+      "password": "Passwort ändern",
+      "update": "Jetzt reparieren",
+      "terminal": "Terminal öffnen"
+    },
+    "steps": {
+      "mount": "System wird eingehängt",
+      "grub_install": "Bootloader wird repariert",
+      "update_grub": "Booteinträge werden aktualisiert",
+      "initramfs": "Startdateien werden neu erstellt",
+      "password": "Neues Passwort wird gespeichert",
+      "unmount": "System wird geschlossen"
+    },
+    "working": {
+      "boot": "Der Start deines Computers wird repariert",
+      "password": "Das Passwort wird geändert",
+      "update": "Nach dem Update wird repariert",
+      "terminal": "Das Terminal wird vorbereitet"
+    },
+    "done": {
+      "boot": {
+        "title": "Fertig, dein Computer kann wieder starten",
+        "message": "Starte neu und entferne diesen USB-Stick, sobald sich der Computer ausschaltet."
+      },
+      "password": {
+        "title": "Passwort geändert",
+        "message": "Du kannst dich jetzt mit dem neuen Passwort anmelden."
+      },
+      "update": {
+        "title": "Fertig, das System wurde repariert",
+        "message": "Starte neu und entferne diesen USB-Stick, sobald sich der Computer ausschaltet."
+      }
+    },
+    "terminal": {
+      "title": "Wiederherstellungsterminal des installierten Systems",
+      "exit": "Gib exit ein oder drücke Strg+D zum Verlassen",
+      "cleanup": "System wird geschlossen",
+      "done": "Fertig"
+    },
+    "terminalOpen": {
+      "title": "Das Terminal ist geöffnet",
+      "message": "Das System wird von selbst geschlossen, wenn du das Terminal verlässt."
+    },
+    "failed": {
+      "title": "Die Reparatur war nicht möglich",
+      "message": "Etwas ist schiefgelaufen, und nichts blieb halb erledigt. Die Details unten zeigen, was fehlgeschlagen ist."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Partitionen vor der Installation erstellen, verschieben und löschen.",
+      "error": "GParted konnte nicht geöffnet werden: {error}"
+    },
+    "hardware": {
+      "title": "Hardware-Informationen",
+      "description": "Prozessor, Arbeitsspeicher und Festplatten dieses Computers.",
+      "view": "Ansehen",
+      "cpu": "Prozessor",
+      "memory": "Arbeitsspeicher",
+      "storage": "Speicher"
+    },
+    "resolution": {
+      "title": "Bildschirmauflösung",
+      "description": "Sie ändert nur diese Live-Sitzung.",
+      "error": "Sie konnte nicht geändert werden.",
+      "unsupported": "Auf diesem Desktop noch nicht verfügbar."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Schaltet NumLock im installierten System ein. Bei Laptops ohne Ziffernblock besser ausgeschaltet.",
+      "badge": "Bei der Installation",
+      "enabledTitle": "NumLock an",
+      "enabledText": "NumLock wird im installierten System automatisch eingeschaltet.",
+      "disabledTitle": "NumLock aus",
+      "disabledText": "NumLock wird im installierten System nicht eingeschaltet.\nEmpfohlen für Laptops ohne Ziffernblock."
+    }
+  },
+  "language": {
+    "description": "Ändere die Sprache und das Tastaturlayout des Systems. Die Sitzung startet von selbst neu, um sie anzuwenden.",
+    "languages": "Sprache",
+    "keyboard": "Tastatur",
+    "keyboardHint": "Sie folgt der gewählten Sprache, kann aber getrennt geändert werden.",
+    "apply": "Anwenden und Sitzung neu starten",
+    "restartNote": "Speichere, was du geöffnet hast: Die Sitzung wird beendet und startet neu.",
+    "steps": {
+      "locale": "Sprache wird eingerichtet",
+      "user": "Deine Einstellungen werden angewendet",
+      "xdg": "Deine Ordner werden verschoben",
+      "bookmarks": "Lesezeichen werden aktualisiert",
+      "restart": "Sitzung wird neu gestartet"
+    }
+  }
+}

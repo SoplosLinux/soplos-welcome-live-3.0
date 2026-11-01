@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Minimizar",
+      "maximize": "Maximizar",
+      "restore": "Restaurar",
+      "close": "Cerrar"
+    },
+    "tabs": {
+      "home": { "label": "Inicio", "title": "Bienvenida" },
+      "install": { "label": "Instalar", "title": "Instalar Soplos Linux" },
+      "rescue": { "label": "Rescate", "title": "Reparar mi equipo" },
+      "tools": { "label": "Herramientas", "title": "Herramientas" },
+      "language": { "label": "Idioma", "title": "Idioma y teclado" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Mostrar al iniciar",
+    "interfaceLanguage": "Idioma de esta ventana",
+    "switchToLight": "Cambiar al tema claro",
+    "switchToDark": "Cambiar al tema oscuro",
+    "aboutTooltip": "Acerca de Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "ok": "Aceptar",
+    "open": "Abrir",
+    "retry": "Intentarlo de nuevo",
+    "back": "Volver",
+    "showDetails": "Ver detalles",
+    "hideDetails": "Ocultar detalles",
+    "error": "Error",
+    "unknown": "Desconocido"
+  },
+  "about": {
+    "version": "Versión {version}",
+    "tagline": "La pantalla de bienvenida de la sesión live de Soplos Linux",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Licenciado bajo la Licencia Pública General de GNU v3.0 o posterior"
+  },
+  "home": {
+    "title": "Bienvenido a Soplos Linux",
+    "description": "Estás en una sesión live: no se instala ni se cambia nada hasta que tú lo decidas. Prueba el sistema con calma, instálalo cuando quieras o repara uno que ya tengas.",
+    "install": "Instalar Soplos",
+    "keepTrying": "Seguir probando",
+    "editions": {
+      "tyron": "Edición Tyron · Xfce",
+      "tyson": "Edición Tyson · Plasma",
+      "boro": "Edición Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Procesador",
+      "memory": "Memoria",
+      "graphics": "Gráfica",
+      "storage": "Almacenamiento"
+    },
+    "cards": {
+      "install": {
+        "title": "Instalar",
+        "description": "Instala Soplos en este equipo. Puedes conservar lo que ya tienes o empezar de cero.",
+        "badge": "Listo",
+        "action": "Empezar"
+      },
+      "rescue": {
+        "title": "Reparar",
+        "description": "Si tu equipo no arranca o has olvidado la contraseña, aquí se arregla sin saber de comandos.",
+        "action": "Reparar"
+      },
+      "tools": {
+        "title": "Herramientas",
+        "description": "Particiona discos, mira tu hardware y ajusta la pantalla de esta sesión.",
+        "action": "Abrir"
+      }
+    },
+    "links": {
+      "web": "Web",
+      "forums": "Foros",
+      "wiki": "Wiki",
+      "donate": "Donar"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Instalador {name}",
+      "description": "Te guía por el idioma, los discos y tu usuario. Antes de cambiar nada te enseña un resumen y te pide confirmar."
+    },
+    "checks": {
+      "title": "Antes de empezar",
+      "internet": "Conexión a internet",
+      "internetOn": "Conectado",
+      "internetOff": "Sin conexión",
+      "uefi": "Modo de arranque",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (heredado)",
+      "disk": "Discos",
+      "diskNone": "No se ha encontrado ningún disco",
+      "power": "Energía",
+      "powerOk": "Conectado a la corriente",
+      "powerBattery": "Con batería: conecta el cargador"
+    },
+    "start": "Instalar Soplos",
+    "starting": "Iniciando el instalador",
+    "notFound": {
+      "title": "Instalador no encontrado",
+      "message": "No se ha encontrado el instalador {name}. Instálalo o ejecuta la instalación a mano."
+    }
+  },
+  "rescue": {
+    "question": "¿Qué ha pasado?",
+    "advanced": "Avanzado: abrir una terminal en un sistema instalado",
+    "scanning": "Buscando sistemas instalados",
+    "scanningHint": "Tarda unos segundos.",
+    "foundOne": "Hemos encontrado este sistema",
+    "chooseSystem": "¿Cuál quieres reparar?",
+    "reboot": "Reiniciar ahora",
+    "problems": {
+      "boot": {
+        "title": "No arranca el ordenador",
+        "description": "Pantalla negra o un error al encenderlo"
+      },
+      "password": {
+        "title": "He olvidado mi contraseña",
+        "description": "Elige un usuario y pon una nueva"
+      },
+      "update": {
+        "title": "Falló tras una actualización",
+        "description": "Reconstruye lo necesario para volver a arrancar"
+      }
+    },
+    "none": {
+      "title": "No hay ningún sistema instalado",
+      "message": "No se ha encontrado ningún sistema Linux en los discos de este equipo. Comprueba que el disco está conectado y vuelve a intentarlo."
+    },
+    "form": {
+      "user": "Usuario",
+      "password": "Contraseña nueva",
+      "repeat": "Repite la contraseña",
+      "empty": "Escribe la contraseña nueva.",
+      "mismatch": "Las contraseñas no coinciden."
+    },
+    "action": {
+      "boot": "Reparar ahora",
+      "password": "Cambiar la contraseña",
+      "update": "Reparar ahora",
+      "terminal": "Abrir la terminal"
+    },
+    "steps": {
+      "mount": "Montando el sistema",
+      "grub_install": "Reparando el gestor de arranque",
+      "update_grub": "Actualizando las entradas de arranque",
+      "initramfs": "Reconstruyendo los archivos de inicio",
+      "password": "Guardando la contraseña nueva",
+      "unmount": "Cerrando el sistema"
+    },
+    "working": {
+      "boot": "Reparando el arranque de tu equipo",
+      "password": "Cambiando la contraseña",
+      "update": "Reparando tras la actualización",
+      "terminal": "Preparando la terminal"
+    },
+    "done": {
+      "boot": {
+        "title": "Listo, tu equipo ya puede arrancar",
+        "message": "Reinicia y retira este USB cuando el equipo se apague."
+      },
+      "password": {
+        "title": "Contraseña cambiada",
+        "message": "Ya puedes iniciar sesión con la contraseña nueva."
+      },
+      "update": {
+        "title": "Listo, el sistema está reparado",
+        "message": "Reinicia y retira este USB cuando el equipo se apague."
+      }
+    },
+    "terminal": {
+      "title": "Terminal de recuperación del sistema instalado",
+      "exit": "Escribe exit o pulsa Ctrl+D para salir",
+      "cleanup": "Cerrando el sistema",
+      "done": "Listo"
+    },
+    "terminalOpen": {
+      "title": "La terminal está abierta",
+      "message": "El sistema se cierra solo cuando sales de la terminal."
+    },
+    "failed": {
+      "title": "No se ha podido reparar",
+      "message": "Algo ha fallado y no se ha dejado nada a medias. Los detalles de abajo dicen qué falló."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Crea, mueve y borra particiones antes de instalar.",
+      "error": "No se ha podido abrir GParted: {error}"
+    },
+    "hardware": {
+      "title": "Información del hardware",
+      "description": "Procesador, memoria y discos de este equipo.",
+      "view": "Ver",
+      "cpu": "Procesador",
+      "memory": "Memoria",
+      "storage": "Almacenamiento"
+    },
+    "resolution": {
+      "title": "Resolución de pantalla",
+      "description": "Solo cambia esta sesión live.",
+      "error": "No se ha podido cambiar.",
+      "unsupported": "Aún no disponible en este escritorio."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Activa NumLock en el sistema instalado. Conviene desactivarlo en portátiles sin teclado numérico.",
+      "badge": "Al instalar",
+      "enabledTitle": "NumLock activado",
+      "enabledText": "NumLock se activará automáticamente en el sistema instalado.",
+      "disabledTitle": "NumLock desactivado",
+      "disabledText": "NumLock no se activará en el sistema instalado.\nRecomendado en portátiles sin teclado numérico."
+    }
+  },
+  "language": {
+    "description": "Cambia el idioma y la distribución del teclado del sistema. La sesión se reinicia sola para aplicarlos.",
+    "languages": "Idioma",
+    "keyboard": "Teclado",
+    "keyboardHint": "Sigue al idioma que elijas, pero puedes cambiarlo por separado.",
+    "apply": "Aplicar y reiniciar la sesión",
+    "restartNote": "Guarda lo que tengas abierto: la sesión se cierra y vuelve a abrirse.",
+    "steps": {
+      "locale": "Configurando el idioma",
+      "user": "Aplicando tus ajustes",
+      "xdg": "Moviendo tus carpetas",
+      "bookmarks": "Actualizando los marcadores",
+      "restart": "Reiniciando la sesión"
+    }
+  }
+}

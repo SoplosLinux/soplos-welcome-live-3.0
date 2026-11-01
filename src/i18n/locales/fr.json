@@ -1,0 +1,236 @@
+{
+  "app": {
+    "window": {
+      "minimize": "Réduire",
+      "maximize": "Agrandir",
+      "restore": "Restaurer",
+      "close": "Fermer"
+    },
+    "tabs": {
+      "home": { "label": "Accueil", "title": "Bienvenue" },
+      "install": { "label": "Installer", "title": "Installer Soplos Linux" },
+      "rescue": { "label": "Secours", "title": "Réparer mon ordinateur" },
+      "tools": { "label": "Outils", "title": "Outils" },
+      "language": { "label": "Langue", "title": "Langue et clavier" }
+    }
+  },
+  "sidebar": {
+    "showOnStartup": "Afficher au démarrage",
+    "interfaceLanguage": "Langue de cette fenêtre",
+    "switchToLight": "Passer au thème clair",
+    "switchToDark": "Passer au thème sombre",
+    "aboutTooltip": "À propos de Soplos Welcome Live (F1)"
+  },
+  "common": {
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "ok": "OK",
+    "open": "Ouvrir",
+    "retry": "Réessayer",
+    "back": "Retour",
+    "showDetails": "Afficher les détails",
+    "hideDetails": "Masquer les détails",
+    "error": "Erreur",
+    "unknown": "Inconnu"
+  },
+  "about": {
+    "version": "Version {version}",
+    "tagline": "L'écran de bienvenue de la session live de Soplos Linux",
+    "copyright": "Copyright © 2026 Sergi Perich",
+    "license": "Distribué sous la licence publique générale GNU v3.0 ou ultérieure"
+  },
+  "home": {
+    "title": "Bienvenue sur Soplos Linux",
+    "description": "Vous êtes dans une session live : rien n'est installé ni modifié tant que vous ne l'avez pas décidé. Essayez le système tranquillement, installez-le quand vous voulez, ou réparez-en un que vous avez déjà.",
+    "install": "Installer Soplos",
+    "keepTrying": "Continuer à essayer",
+    "editions": {
+      "tyron": "Édition Tyron · Xfce",
+      "tyson": "Édition Tyson · Plasma",
+      "boro": "Édition Boro · GNOME"
+    },
+    "system": {
+      "cpu": "Processeur",
+      "memory": "Mémoire",
+      "graphics": "Graphique",
+      "storage": "Stockage"
+    },
+    "cards": {
+      "install": {
+        "title": "Installer",
+        "description": "Installez Soplos sur cet ordinateur. Vous pouvez garder ce que vous avez ou repartir de zéro.",
+        "badge": "Prêt",
+        "action": "Commencer"
+      },
+      "rescue": {
+        "title": "Réparer",
+        "description": "Si votre ordinateur ne démarre pas ou si vous avez oublié le mot de passe, tout se règle ici sans connaître de commandes.",
+        "action": "Réparer"
+      },
+      "tools": {
+        "title": "Outils",
+        "description": "Partitionnez les disques, consultez votre matériel et réglez l'écran de cette session.",
+        "action": "Ouvrir"
+      }
+    },
+    "links": {
+      "web": "Site web",
+      "forums": "Forums",
+      "wiki": "Wiki",
+      "donate": "Faire un don"
+    }
+  },
+  "install": {
+    "intro": {
+      "title": "Installateur {name}",
+      "description": "Il vous guide à travers la langue, les disques et votre utilisateur. Avant de changer quoi que ce soit, il affiche un résumé et demande confirmation."
+    },
+    "checks": {
+      "title": "Avant de commencer",
+      "internet": "Connexion à internet",
+      "internetOn": "Connecté",
+      "internetOff": "Non connecté",
+      "uefi": "Mode de démarrage",
+      "uefiOn": "UEFI",
+      "uefiOff": "BIOS (ancien)",
+      "disk": "Disques",
+      "diskNone": "Aucun disque trouvé",
+      "power": "Alimentation",
+      "powerOk": "Branché sur le secteur",
+      "powerBattery": "Sur batterie : branchez le chargeur"
+    },
+    "start": "Installer Soplos",
+    "starting": "Démarrage de l'installateur",
+    "notFound": {
+      "title": "Installateur introuvable",
+      "message": "L'installateur {name} est introuvable. Installez-le ou lancez l'installation manuellement."
+    }
+  },
+  "rescue": {
+    "question": "Que s'est-il passé ?",
+    "advanced": "Avancé : ouvrir un terminal dans un système installé",
+    "scanning": "Recherche des systèmes installés",
+    "scanningHint": "Cela prend quelques secondes.",
+    "foundOne": "Nous avons trouvé ce système",
+    "chooseSystem": "Lequel voulez-vous réparer ?",
+    "reboot": "Redémarrer maintenant",
+    "problems": {
+      "boot": {
+        "title": "Mon ordinateur ne démarre pas",
+        "description": "Écran noir ou erreur à l'allumage"
+      },
+      "password": {
+        "title": "J'ai oublié mon mot de passe",
+        "description": "Choisissez un utilisateur et définissez-en un nouveau"
+      },
+      "update": {
+        "title": "Ça ne marche plus après une mise à jour",
+        "description": "Reconstruit ce qu'il faut pour redémarrer"
+      }
+    },
+    "none": {
+      "title": "Aucun système installé trouvé",
+      "message": "Aucun système Linux n'a été trouvé sur les disques de cet ordinateur. Vérifiez que le disque est branché et réessayez."
+    },
+    "form": {
+      "user": "Utilisateur",
+      "password": "Nouveau mot de passe",
+      "repeat": "Répétez le mot de passe",
+      "empty": "Saisissez le nouveau mot de passe.",
+      "mismatch": "Les mots de passe ne correspondent pas."
+    },
+    "action": {
+      "boot": "Réparer maintenant",
+      "password": "Changer le mot de passe",
+      "update": "Réparer maintenant",
+      "terminal": "Ouvrir le terminal"
+    },
+    "steps": {
+      "mount": "Montage du système",
+      "grub_install": "Réparation du chargeur de démarrage",
+      "update_grub": "Mise à jour des entrées de démarrage",
+      "initramfs": "Reconstruction des fichiers de démarrage",
+      "password": "Enregistrement du nouveau mot de passe",
+      "unmount": "Fermeture du système"
+    },
+    "working": {
+      "boot": "Réparation du démarrage de votre ordinateur",
+      "password": "Changement du mot de passe",
+      "update": "Réparation après la mise à jour",
+      "terminal": "Préparation du terminal"
+    },
+    "done": {
+      "boot": {
+        "title": "Terminé, votre ordinateur peut redémarrer",
+        "message": "Redémarrez et retirez cette clé USB quand l'ordinateur s'éteint."
+      },
+      "password": {
+        "title": "Mot de passe changé",
+        "message": "Vous pouvez maintenant ouvrir une session avec le nouveau mot de passe."
+      },
+      "update": {
+        "title": "Terminé, le système est réparé",
+        "message": "Redémarrez et retirez cette clé USB quand l'ordinateur s'éteint."
+      }
+    },
+    "terminal": {
+      "title": "Terminal de récupération du système installé",
+      "exit": "Tapez exit ou appuyez sur Ctrl+D pour quitter",
+      "cleanup": "Fermeture du système",
+      "done": "Terminé"
+    },
+    "terminalOpen": {
+      "title": "Le terminal est ouvert",
+      "message": "Le système se ferme tout seul quand vous quittez le terminal."
+    },
+    "failed": {
+      "title": "La réparation n'a pas pu se faire",
+      "message": "Quelque chose a échoué et rien n'a été laissé à moitié fait. Les détails ci-dessous indiquent ce qui a échoué."
+    }
+  },
+  "tools": {
+    "gparted": {
+      "title": "GParted",
+      "description": "Créez, déplacez et supprimez des partitions avant d'installer.",
+      "error": "Impossible d'ouvrir GParted : {error}"
+    },
+    "hardware": {
+      "title": "Informations sur le matériel",
+      "description": "Processeur, mémoire et disques de cet ordinateur.",
+      "view": "Voir",
+      "cpu": "Processeur",
+      "memory": "Mémoire",
+      "storage": "Stockage"
+    },
+    "resolution": {
+      "title": "Résolution de l'écran",
+      "description": "Elle ne change que cette session live.",
+      "error": "Impossible de la changer.",
+      "unsupported": "Pas encore disponible sur ce bureau."
+    },
+    "numlock": {
+      "title": "NumLock",
+      "description": "Active NumLock dans le système installé. Mieux vaut le désactiver sur les portables sans pavé numérique.",
+      "badge": "À l'installation",
+      "enabledTitle": "NumLock activé",
+      "enabledText": "NumLock sera activé automatiquement dans le système installé.",
+      "disabledTitle": "NumLock désactivé",
+      "disabledText": "NumLock ne sera pas activé dans le système installé.\nRecommandé pour les portables sans pavé numérique."
+    }
+  },
+  "language": {
+    "description": "Changez la langue et la disposition du clavier du système. La session redémarre toute seule pour les appliquer.",
+    "languages": "Langue",
+    "keyboard": "Clavier",
+    "keyboardHint": "Il suit la langue choisie, mais vous pouvez le changer séparément.",
+    "apply": "Appliquer et redémarrer la session",
+    "restartNote": "Enregistrez ce que vous avez ouvert : la session se ferme puis se rouvre.",
+    "steps": {
+      "locale": "Configuration de la langue",
+      "user": "Application de vos réglages",
+      "xdg": "Déplacement de vos dossiers",
+      "bookmarks": "Mise à jour des favoris",
+      "restart": "Redémarrage de la session"
+    }
+  }
+}
