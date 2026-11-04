@@ -1,0 +1,68 @@
+.TH "SOPLOS-WELCOME-LIVE" "1" "2026-10-31" "Soplos Linux" "User Commands"
+.SH NAME
+soplos-welcome-live \- Welcome screen of the Soplos Linux live session
+.SH SYNOPSIS
+.B soplos-welcome-live
+.SH DESCRIPTION
+.B soplos-welcome-live
+is the welcome screen of the Soplos Linux live session. Built with Tauri 2,
+Rust, and Svelte, it works on Xfce (Tyron), KDE Plasma (Tyson) and GNOME
+(Boro), on X11 and Wayland. It is organized in five sections:
+.IP \[bu] 2
+.B Home:
+the edition, the processor, the memory, the graphics card and the storage of
+the machine, and shortcuts to the other sections.
+.IP \[bu]
+.B Install:
+launches the installer of the live session and shows what to check before
+starting: the internet connection, the boot mode, the disks and the power.
+Which installer it is, and where it is, is read from
+.IR /usr/share/soplos-welcome-live/installer.json .
+.IP \[bu]
+.B Rescue:
+repairs an installed system in plain language: the computer does not start,
+a forgotten password, a failure after an update. It finds the installed
+systems by itself, BTRFS subvolumes included, and mounts the boot, EFI and
+home partitions the system's own
+.I /etc/fstab
+names. The advanced option opens a terminal inside the installed system.
+.IP \[bu]
+.B Tools:
+GParted, the hardware information, the screen resolution of the session
+(X11 and Plasma) and NumLock for the installed Tyron system.
+.IP \[bu]
+.B Language:
+changes the language and the keyboard layout of the system, moves the user
+folders to their new names and restarts the session.
+.P
+The interface is available in English, Spanish, German, French, Italian,
+Portuguese, Romanian and Russian. It starts in the system language and falls
+back to English.
+.P
+The window never runs as root. The live user runs the system commands with
+.BR sudo (8)
+without a password, and GParted is opened through
+.BR pkexec (1).
+.SH FILES
+.TP
+.I /usr/share/soplos-welcome-live/installer.json
+The installer of the live session: its name, the paths to try, the
+environment variables and whether it needs root.
+.TP
+.I ~/.config/autostart/org.soplos.welcomelive.desktop
+Present when the screen is shown at the start of the session.
+.TP
+.I /mnt/chroot
+Where the installed system is mounted while it is repaired.
+.SH SEE ALSO
+.BR sudo (8),
+.BR pkexec (1),
+.BR chroot (8),
+.BR gparted (8)
+.SH AUTHOR
+Sergi Perich <info@soploslinux.com>
+.SH REPORTING BUGS
+https://github.com/SoplosLinux/soplos-welcome-live-3.0/issues
+.SH COPYRIGHT
+Copyright \(co 2026 Sergi Perich. Licensed under the GNU General Public
+License v3.0 or later.

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0-1-alpha] - 2026-11-04
+
+### Fixed
+- The application metadata points to the launcher that the package installs, `soplos-welcome-live.desktop`, so the software centers link the entry of the menu with the program.
+- The manual page of the program is the same text in the project and in the package.
+
 ## [3.0.0-alpha] - 2026-10-31
 
 ### Added
