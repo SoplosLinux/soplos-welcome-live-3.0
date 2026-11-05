@@ -198,7 +198,7 @@
   </screenshots>
 
   <releases>
-    <release version="3.0.0-3-beta" date="2026-11-05">
+    <release version="3.0.0-beta" date="2026-11-05">
       <description>
         <p>First beta. The system rescue, the password change and the repair of the initramfs and GRUB work in a live session of Soplos Linux Tyson.</p>
       </description>

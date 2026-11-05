@@ -1,7 +1,7 @@
 {
   "name": "soplos-welcome-live-3",
   "private": true,
-  "version": "3.0.0-3-beta",
+  "version": "3.0.0-beta",
   "type": "module",
   "scripts": {
     "dev": "vite",
