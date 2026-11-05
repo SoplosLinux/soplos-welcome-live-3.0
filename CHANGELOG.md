@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [3.0.0-beta] - 2026-11-05
 
 First beta. The system rescue, the password change and the repair of the initramfs and GRUB were tested in a live session of Soplos Linux Tyson (Plasma, Wayland) in a virtual machine, on an installed system with the EFI partition, `/boot` and the root partition on btrfs apart.
+
 ## [3.0.0-2-alpha] - 2026-11-05
 
 ### Fixed
