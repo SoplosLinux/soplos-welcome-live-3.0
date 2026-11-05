@@ -195,15 +195,87 @@ pub fn rescue_is_mounted() -> bool {
     is_mountpoint(MOUNT_POINT)
 }
 
-/// The device a /etc/fstab spec ("UUID=...", "LABEL=...", "/dev/...") names.
-fn resolve_spec(spec: &str) -> Option<String> {
+// A label as udev writes it in /dev/disk/by-label: letters, digits and the
+// characters "#+-.:=@_" stay, anything else is \xNN per byte.
+fn udev_escape(value: &str) -> String {
+    let mut out = String::new();
+    for c in value.chars() {
+        if c.is_ascii_alphanumeric() || "#+-.:=@_".contains(c) {
+            out.push(c);
+        } else {
+            let mut buffer = [0u8; 4];
+            for byte in c.encode_utf8(&mut buffer).bytes() {
+                out.push_str(&format!("\\x{byte:02x}"));
+            }
+        }
+    }
+    out
+}
+
+/// The device a /etc/fstab spec ("UUID=...", "LABEL=...", "PARTUUID=...",
+/// "PARTLABEL=..." or a path) names, looked up in `disk_dir` (/dev/disk). No
+/// program is run for it: `findfs` lives in /usr/sbin, which is not in the PATH
+/// of a normal user, and its absence used to skip /boot and /boot/efi without a word.
+fn spec_path(spec: &str, disk_dir: &Path) -> Option<String> {
+    let spec = spec.trim();
     if spec.starts_with('/') {
         return Some(spec.to_string());
     }
-    if spec.contains('=') {
-        return run("findfs", &[spec]).ok().map(|s| s.trim().to_string());
+    let (kind, value) = spec.split_once('=')?;
+    let value = value.trim().trim_matches('"');
+    if value.is_empty() {
+        return None;
     }
-    None
+    let (folder, labels) = match kind {
+        "UUID" => ("by-uuid", false),
+        "PARTUUID" => ("by-partuuid", false),
+        "LABEL" => ("by-label", true),
+        "PARTLABEL" => ("by-partlabel", true),
+        _ => return None,
+    };
+    let names = if labels {
+        vec![udev_escape(value)]
+    } else {
+        // A FAT identifier is written in capitals, the others in lower case.
+        vec![value.to_string(), value.to_uppercase(), value.to_lowercase()]
+    };
+    names.into_iter().map(|n| disk_dir.join(folder).join(n)).find(|p| p.exists()).map(|p| p.to_string_lossy().to_string())
+}
+
+fn resolve_spec(spec: &str) -> Option<String> {
+    if let Some(path) = spec_path(spec, Path::new("/dev/disk")) {
+        return Some(path);
+    }
+    // Last resort, as the administrator, who has /usr/sbin in the PATH.
+    sudo(&["findfs", spec]).ok().map(|s| s.trim().to_string()).filter(|s| !s.is_empty())
+}
+
+/// The mount points of the installed system's /etc/fstab that the bootloader and
+/// the initramfs write to (/boot, /boot/efi, /efi) and that `mounted` says are
+/// not mounted. A repair that wrote into the empty folder under an unmounted
+/// /boot would "succeed" and repair nothing.
+fn boot_mounts_missing(fstab: &str, mounted: impl Fn(&str) -> bool) -> Vec<String> {
+    let mut missing: Vec<String> = Vec::new();
+    for line in fstab.lines().map(str::trim).filter(|l| !l.starts_with('#') && !l.is_empty()) {
+        let fields: Vec<&str> = line.split_whitespace().collect();
+        if fields.len() < 4 || !["/boot", "/boot/efi", "/efi"].contains(&fields[1]) {
+            continue;
+        }
+        if !mounted(fields[1]) && !missing.iter().any(|m| m == fields[1]) {
+            missing.push(fields[1].to_string());
+        }
+    }
+    missing
+}
+
+fn require_boot_mounts() -> Result<(), String> {
+    let fstab = fs::read_to_string(format!("{MOUNT_POINT}/etc/fstab")).unwrap_or_default();
+    let missing = boot_mounts_missing(&fstab, |point| is_mountpoint(&format!("{MOUNT_POINT}{point}")));
+    if missing.is_empty() {
+        Ok(())
+    } else {
+        Err(format!("{} of the installed system is not mounted, so nothing was changed.", missing.join(" and ")))
+    }
 }
 
 #[tauri::command(async)]
@@ -230,7 +302,10 @@ pub fn rescue_mount(device: String, subvol: Option<String>) -> Result<String, St
             if fields.len() < 4 || fields[1] != wanted {
                 continue;
             }
-            let Some(source) = resolve_spec(fields[0]) else { continue };
+            let Some(source) = resolve_spec(fields[0]) else {
+                log.push_str(&format!("could not find the device {} for {wanted}\n", fields[0]));
+                break;
+            };
             let target = format!("{MOUNT_POINT}{wanted}");
             let _ = sudo(&["mkdir", "-p", &target]);
             // Only the subvolume option matters for a btrfs mount here.
@@ -316,6 +391,10 @@ fn valid_username(name: &str) -> bool {
 pub fn rescue_step(step: String, device: Option<String>, user: Option<String>, password: Option<String>) -> Result<String, String> {
     if !is_mountpoint(MOUNT_POINT) {
         return Err("not-mounted".to_string());
+    }
+    // The three steps that write into /boot need it, and /boot/efi, mounted.
+    if ["grub_install", "update_grub", "initramfs"].contains(&step.as_str()) {
+        require_boot_mounts()?;
     }
     match step.as_str() {
         "grub_install" => {
@@ -465,4 +544,58 @@ printf '%s\n' {done_message}
         }
     }
     Err("no-terminal".to_string())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const FSTAB: &str = "# /etc/fstab\n\
+UUID=aaaa-1 / btrfs subvol=@,defaults 0 0\n\
+UUID=bbbb-2 /boot ext4 defaults 0 2\n\
+UUID=ABCD-1234 /boot/efi vfat umask=0077 0 1\n\
+UUID=cccc-3 /home btrfs subvol=@home,defaults 0 0\n\
+UUID=dddd-4 none swap sw 0 0\n";
+
+    #[test]
+    fn labels_are_written_as_udev_writes_them() {
+        assert_eq!(udev_escape("boot"), "boot");
+        assert_eq!(udev_escape("My Disk"), "My\\x20Disk");
+        assert_eq!(udev_escape("a/b"), "a\\x2fb");
+    }
+
+    #[test]
+    fn a_spec_is_found_in_dev_disk_without_running_anything() {
+        let dir = std::env::temp_dir().join(format!("rescue-spec-{}", std::process::id()));
+        for (folder, name) in [("by-uuid", "ABCD-1234"), ("by-uuid", "bbbb-2"), ("by-label", "My\\x20Disk"), ("by-partuuid", "1f2e")] {
+            fs::create_dir_all(dir.join(folder)).unwrap();
+            fs::write(dir.join(folder).join(name), "").unwrap();
+        }
+        let found = |spec: &str| spec_path(spec, &dir);
+        assert!(found("UUID=bbbb-2").unwrap().ends_with("by-uuid/bbbb-2"));
+        // The same identifier in another case, and with quotes.
+        assert!(found("UUID=abcd-1234").unwrap().ends_with("by-uuid/ABCD-1234"));
+        assert!(found("UUID=\"bbbb-2\"").unwrap().ends_with("by-uuid/bbbb-2"));
+        assert!(found("LABEL=My Disk").unwrap().ends_with("by-label/My\\x20Disk"));
+        assert!(found("PARTUUID=1f2e").is_some());
+        assert_eq!(found("/dev/sda2").as_deref(), Some("/dev/sda2"));
+        assert_eq!(found("UUID=nothing-here"), None);
+        assert_eq!(found("SOMETHING=else"), None);
+        assert_eq!(found("garbage"), None);
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    #[test]
+    fn a_boot_partition_that_is_not_mounted_stops_the_repair() {
+        assert_eq!(boot_mounts_missing(FSTAB, |_| false), vec!["/boot".to_string(), "/boot/efi".to_string()]);
+        assert_eq!(boot_mounts_missing(FSTAB, |p| p == "/boot"), vec!["/boot/efi".to_string()]);
+        assert!(boot_mounts_missing(FSTAB, |_| true).is_empty());
+    }
+
+    #[test]
+    fn a_system_that_declares_no_boot_partition_needs_none() {
+        let fstab = "UUID=aaaa-1 / ext4 defaults 0 1\n#UUID=bbbb-2 /boot ext4 defaults 0 2\n";
+        assert!(boot_mounts_missing(fstab, |_| false).is_empty());
+        assert!(boot_mounts_missing("", |_| false).is_empty());
+    }
 }

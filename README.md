@@ -1,6 +1,6 @@
 # Soplos Welcome Live 3.0
 
-![Version](https://img.shields.io/badge/version-3.0.0--1--alpha-blue)
+![Version](https://img.shields.io/badge/version-3.0.0--3--beta-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0--or--later-green)
 ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
 ![Tauri](https://img.shields.io/badge/Tauri-2-orange)
@@ -18,7 +18,7 @@ Install Soplos, repair a system you already have without knowing any command, pa
 
 ## Status
 
-This is the first alpha of the rewrite of the 2.x program (Python 3 and GTK3). It has not yet been tested on real hardware: report anything that fails.
+This is a beta of the rewrite of the 2.x program (Python 3 and GTK3). It has been tested in a live session of Soplos Linux Tyson, on Plasma and Wayland, in a virtual machine; the other desktops and real hardware are still to be tested: report anything that fails.
 
 ## Features
 

@@ -3,7 +3,7 @@
   import { _ } from "svelte-i18n";
   import { api } from "../lib/api";
   import { progress } from "../lib/progress";
-  import { Power, KeyRound, RefreshCw, ChevronRight, ChevronLeft, HardDrive, Check, TerminalSquare } from "lucide-svelte";
+  import { Power, KeyRound, RefreshCw, ChevronRight, ChevronLeft, ChevronDown, HardDrive, Check, TerminalSquare } from "lucide-svelte";
 
   type Problem = "boot" | "password" | "update" | "terminal";
   type Phase = "choose" | "scanning" | "none" | "pick" | "working" | "done" | "failed" | "terminal";
@@ -247,15 +247,20 @@
     {#if problem === "password"}
       <div class="flex flex-col gap-2.5 max-w-[340px] mb-4">
         <label class="text-[0.76rem] text-text-muted" for="rescue-user">{$_("rescue.form.user")}</label>
-        <select
-          id="rescue-user"
-          class="bg-surface-2 border border-border rounded px-2.5 py-2 text-[0.86rem] text-text-bright outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
-          bind:value={user}
-        >
-          {#each system.users as name}
-            <option value={name}>{name}</option>
-          {/each}
-        </select>
+        <!-- Without appearance-none the toolkit draws the box itself, in white and
+             with the text in a color that cannot be read on it. -->
+        <div class="relative">
+          <select
+            id="rescue-user"
+            class="appearance-none w-full bg-surface-2 border border-border rounded pl-2.5 pr-8 py-2 text-[0.86rem] text-text-bright outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+            bind:value={user}
+          >
+            {#each system.users as name}
+              <option value={name}>{name}</option>
+            {/each}
+          </select>
+          <ChevronDown size={14} class="absolute right-2.5 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+        </div>
         <label class="text-[0.76rem] text-text-muted" for="rescue-pass">{$_("rescue.form.password")}</label>
         <input
           id="rescue-pass"

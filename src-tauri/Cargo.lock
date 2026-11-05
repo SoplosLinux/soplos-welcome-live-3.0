@@ -3271,7 +3271,7 @@ dependencies = [
 
 [[package]]
 name = "soplos-welcome-live"
-version = "3.0.0-1-alpha"
+version = "3.0.0-3-beta"
 dependencies = [
  "serde",
  "serde_json",
