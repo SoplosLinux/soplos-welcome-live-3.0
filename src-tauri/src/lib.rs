@@ -21,6 +21,8 @@ pub fn run() {
             commands::environment::get_environment_info,
             commands::system::get_system_info,
             commands::system::check_internet,
+            commands::system::check_readiness,
+            commands::system::fix_clock,
             commands::system::get_autostart_enabled,
             commands::system::set_autostart_enabled,
             commands::installer::get_installer_info,

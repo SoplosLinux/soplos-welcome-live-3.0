@@ -14,23 +14,90 @@ use std::time::Duration;
 
 use super::environment::desktop_environment;
 
-const LOCALES: [(&str, &str); 8] = [
+/// The locales offered: the language of the dictionaries and the region. The
+/// first of each language is its default.
+const LOCALES: &[(&str, &str)] = &[
     ("es", "es_ES.UTF-8"),
+    ("es", "es_MX.UTF-8"),
+    ("es", "es_AR.UTF-8"),
+    ("es", "es_CO.UTF-8"),
+    ("es", "es_CL.UTF-8"),
+    ("es", "es_PE.UTF-8"),
+    ("es", "es_VE.UTF-8"),
+    ("es", "es_EC.UTF-8"),
+    ("es", "es_UY.UTF-8"),
+    ("es", "es_BO.UTF-8"),
+    ("es", "es_PY.UTF-8"),
+    ("es", "es_CR.UTF-8"),
+    ("es", "es_GT.UTF-8"),
+    ("es", "es_PA.UTF-8"),
+    ("es", "es_DO.UTF-8"),
+    ("es", "es_HN.UTF-8"),
+    ("es", "es_NI.UTF-8"),
+    ("es", "es_SV.UTF-8"),
+    ("es", "es_CU.UTF-8"),
+    ("es", "es_PR.UTF-8"),
     ("en", "en_US.UTF-8"),
+    ("en", "en_GB.UTF-8"),
+    ("en", "en_AU.UTF-8"),
+    ("en", "en_CA.UTF-8"),
+    ("en", "en_IE.UTF-8"),
+    ("en", "en_NZ.UTF-8"),
+    ("en", "en_ZA.UTF-8"),
+    ("en", "en_IN.UTF-8"),
     ("fr", "fr_FR.UTF-8"),
+    ("fr", "fr_BE.UTF-8"),
+    ("fr", "fr_CH.UTF-8"),
+    ("fr", "fr_CA.UTF-8"),
     ("de", "de_DE.UTF-8"),
+    ("de", "de_AT.UTF-8"),
+    ("de", "de_CH.UTF-8"),
     ("pt", "pt_PT.UTF-8"),
+    ("pt", "pt_BR.UTF-8"),
     ("it", "it_IT.UTF-8"),
+    ("it", "it_CH.UTF-8"),
     ("ro", "ro_RO.UTF-8"),
     ("ru", "ru_RU.UTF-8"),
 ];
 
-/// The keyboard layouts offered, one per language of the dictionaries.
-const LAYOUTS: [&str; 8] = ["es", "us", "fr", "de", "pt", "it", "ro", "ru"];
+/// The keyboard layouts offered: one per language of the dictionaries, plus
+/// Latin America, Brazil, the United Kingdom, Ireland, Belgium, Switzerland and Canada.
+const LAYOUTS: &[&str] = &["es", "us", "fr", "de", "pt", "it", "ro", "ru", "latam", "br", "gb", "be", "ch", "ca", "ie"];
+
+/// The keyboard that goes with a region, until the user picks another.
+fn layout_of_locale(locale: &str) -> &'static str {
+    let region = locale.split('.').next().unwrap_or("");
+    match region {
+        "es_ES" => "es",
+        "en_GB" => "gb",
+        "en_IE" => "ie",
+        "pt_BR" => "br",
+        "pt_PT" => "pt",
+        "fr_BE" => "be",
+        "fr_CA" => "ca",
+        "fr_CH" | "de_CH" | "it_CH" => "ch",
+        "fr_FR" => "fr",
+        "de_DE" | "de_AT" => "de",
+        "it_IT" => "it",
+        "ro_RO" => "ro",
+        "ru_RU" => "ru",
+        r if r.starts_with("es_") => "latam",
+        _ => "us",
+    }
+}
+
+/// The LANGUAGE variable of a locale: the region first, then the language, so
+/// that the dictionaries of the language are used when the region has none.
+fn language_list(locale: &str) -> String {
+    let region = locale.split('.').next().unwrap_or("en_US");
+    let language = region.split('_').next().unwrap_or("en");
+    format!("{region}:{language}")
+}
 
 #[derive(Serialize)]
 pub struct LanguageState {
     pub language: String,
+    pub locale: String,
     pub layout: String,
 }
 
@@ -42,12 +109,12 @@ fn username() -> String {
     std::env::var("USER").unwrap_or_else(|_| "liveuser".to_string())
 }
 
-fn locale_for(lang: &str) -> Result<&'static str, String> {
+fn check_locale(lang: &str, locale: &str) -> Result<&'static str, String> {
     LOCALES
         .iter()
-        .find(|(code, _)| *code == lang)
-        .map(|(_, locale)| *locale)
-        .ok_or_else(|| format!("unsupported language: {lang}"))
+        .find(|(code, name)| *code == lang && *name == locale)
+        .map(|(_, name)| *name)
+        .ok_or_else(|| format!("unsupported language or region: {lang} {locale}"))
 }
 
 fn check_layout(layout: &str) -> Result<(), String> {
@@ -61,23 +128,28 @@ fn check_layout(layout: &str) -> Result<(), String> {
 #[tauri::command]
 pub fn get_language_state() -> LanguageState {
     let lang = std::env::var("LANG").unwrap_or_else(|_| "en_US.UTF-8".to_string());
-    let code = lang.split('_').next().unwrap_or("en").to_string();
-    let code = if LOCALES.iter().any(|(c, _)| *c == code) { code } else { "en".to_string() };
-    let layout = match code.as_str() {
-        "en" => "us".to_string(),
-        other => other.to_string(),
-    };
-    LanguageState { language: code, layout }
+    // The exact locale when it is one of the offered; otherwise the default
+    // region of its language, or English.
+    let (code, locale) = LOCALES
+        .iter()
+        .copied()
+        .find(|(_, name)| *name == lang)
+        .or_else(|| {
+            let code = lang.split('_').next().unwrap_or("en");
+            LOCALES.iter().copied().find(|(c, _)| *c == code)
+        })
+        .unwrap_or(("en", "en_US.UTF-8"));
+    LanguageState { language: code.to_string(), locale: locale.to_string(), layout: layout_of_locale(locale).to_string() }
 }
 
 #[tauri::command(async)]
-pub fn language_step(step: String, lang: String, layout: String) -> Result<(), String> {
-    let locale = locale_for(&lang)?;
+pub fn language_step(step: String, lang: String, locale: String, layout: String) -> Result<(), String> {
+    let locale = check_locale(&lang, &locale)?;
     check_layout(&layout)?;
     match step.as_str() {
         "locale" => configure_system_locale(locale, &layout),
         "user" => {
-            apply_user_settings(&lang, locale, &layout);
+            apply_user_settings(locale, &layout);
             Ok(())
         }
         "xdg" => {
@@ -98,8 +170,10 @@ pub fn language_step(step: String, lang: String, layout: String) -> Result<(), S
 /// All the changes that need root, in one script and one sudo call.
 fn configure_system_locale(locale: &str, layout: &str) -> Result<(), String> {
     let user = username();
-    let short = locale.split('_').next().unwrap_or("en");
+    let short = language_list(locale);
     let bare = locale.replace(".UTF-8", "");
+    // The console keymap of Latin America has another name.
+    let console = if layout == "latam" { "la-latin1" } else { layout };
 
     let dm_config = match desktop_environment().as_str() {
         "kde" => format!(
@@ -169,7 +243,8 @@ EOF
 
 # 4. Generate the locale only when it is missing
 if ! locale -a | grep -i "{bare}" > /dev/null; then
-    locale-gen {locale} 2>/dev/null || true
+    sed -i "s/^# *{locale} UTF-8/{locale} UTF-8/" /etc/locale.gen 2>/dev/null || true
+    locale-gen {locale} 2>/dev/null || locale-gen 2>/dev/null || true
 fi
 
 # 5. localectl
@@ -181,7 +256,7 @@ mkdir -p /etc/xdg
 echo "XKBLAYOUT={layout}" > /etc/xdg/keyboard
 
 # 7. Console keyboard
-echo "KEYMAP={layout}" > /etc/vconsole.conf 2>/dev/null || true
+echo "KEYMAP={console}" > /etc/vconsole.conf 2>/dev/null || true
 
 # 8. X11 keyboard config
 mkdir -p /etc/X11/xorg.conf.d
@@ -245,15 +320,16 @@ fn which(program: &str) -> bool {
 }
 
 /// User-level settings, no sudo.
-fn apply_user_settings(lang: &str, locale: &str, layout: &str) {
+fn apply_user_settings(locale: &str, layout: &str) {
     std::env::set_var("LANG", locale);
     std::env::set_var("LC_ALL", locale);
-    std::env::set_var("LANGUAGE", lang);
+    let languages = language_list(locale);
+    std::env::set_var("LANGUAGE", &languages);
 
     match desktop_environment().as_str() {
         "kde" => {
             let kw = kwriteconfig();
-            run_quiet(kw, &["--file", "plasma-localerc", "--group", "Translations", "--key", "LANGUAGE", lang]);
+            run_quiet(kw, &["--file", "plasma-localerc", "--group", "Translations", "--key", "LANGUAGE", &languages]);
             run_quiet(kw, &["--file", "plasma-localerc", "--group", "Formats", "--key", "LANG", locale]);
             run_quiet(kw, &["--file", "kxkbrc", "--group", "Layout", "--key", "LayoutList", layout]);
             run_quiet(kw, &["--file", "kxkbrc", "--group", "Layout", "--key", "Use", "true"]);

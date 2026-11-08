@@ -19,17 +19,48 @@
 
   let installer: InstallerInfo | null = null;
   let checks: InstallChecks | null = null;
+  interface Readiness {
+    internet: boolean;
+    clockOffset: number | null;
+  }
+
+  // The installer stops with error 100 without a connection to the servers or
+  // with a clock that does not match theirs (a few minutes are tolerated).
+  const CLOCK_TOLERANCE = 300;
+
   let internet: boolean | null = null;
+  let clockOffset: number | null = null;
+  let fixing = false;
+  let fixError = "";
+  let warnOpen = false;
   let launching = false;
   let errorOpen = false;
   let timer: ReturnType<typeof setInterval> | undefined;
 
-  async function checkInternet() {
+  async function checkReadiness() {
     try {
-      internet = await api.invoke<boolean>("check_internet");
+      const r = await api.invoke<Readiness>("check_readiness");
+      internet = r.internet;
+      clockOffset = r.clockOffset;
     } catch {
       internet = false;
+      clockOffset = null;
     }
+  }
+
+  $: clockBad = clockOffset !== null && Math.abs(clockOffset) > CLOCK_TOLERANCE;
+  $: clockMinutes = clockOffset === null ? 0 : Math.round(Math.abs(clockOffset) / 60);
+
+  async function fixClock() {
+    fixing = true;
+    fixError = "";
+    try {
+      await api.invoke("fix_clock");
+    } catch (error) {
+      fixError = String(error);
+    }
+    await checkReadiness();
+    fixing = false;
   }
 
   onMount(async () => {
@@ -43,14 +74,21 @@
     } catch {
       checks = null;
     }
-    await checkInternet();
+    await checkReadiness();
     // The same rhythm as the status indicator of 2.x: every 15 seconds.
-    timer = setInterval(checkInternet, 15000);
+    timer = setInterval(checkReadiness, 15000);
   });
 
   onDestroy(() => timer && clearInterval(timer));
 
+  // Asks before starting when the installer is going to fail.
+  function tryStart() {
+    if (internet === false || clockBad) warnOpen = true;
+    else start();
+  }
+
   async function start() {
+    warnOpen = false;
     launching = true;
     progress.set("busy");
     try {
@@ -72,6 +110,15 @@
       value: internet === null ? "…" : internet ? $_("install.checks.internetOn") : $_("install.checks.internetOff"),
       state: internet === false ? "warn" : "ok",
     },
+    ...(clockOffset === null
+      ? []
+      : [
+          {
+            label: $_("install.checks.clock"),
+            value: clockBad ? $_("install.checks.clockOff", { values: { minutes: clockMinutes } }) : $_("install.checks.clockOk"),
+            state: clockBad ? "warn" : "ok",
+          },
+        ]),
     ...(checks
       ? ([
           {
@@ -100,7 +147,7 @@
   ] as Row[];
 </script>
 
-<div class="flex flex-col gap-4 max-w-[640px]">
+<div class="flex flex-col gap-4">
   <div class="bg-surface border border-border rounded p-[18px]">
     <div class="flex items-center gap-3 mb-2.5">
       <div class="w-[38px] h-[38px] bg-surface-2 rounded-lg grid place-items-center text-primary shrink-0">
@@ -128,16 +175,54 @@
     </ul>
   </div>
 
+  {#if clockBad}
+    <div class="bg-surface border border-border rounded p-[14px] flex items-center gap-3">
+      <p class="text-[0.82rem] text-text-muted leading-snug flex-1">{$_("install.clock.hint")}</p>
+      <button
+        class="border border-border hover:border-primary text-text-bright px-4 py-2 rounded text-[0.84rem] disabled:opacity-50 shrink-0"
+        disabled={fixing}
+        on:click={fixClock}
+      >
+        {fixing ? $_("install.clock.fixing") : $_("install.clock.fix")}
+      </button>
+    </div>
+  {/if}
+
   <div>
     <button
       class="bg-primary hover:bg-primary-hover text-text-bright px-6 py-2.5 rounded font-semibold text-[0.9rem] disabled:opacity-50"
       disabled={launching || (installer !== null && !installer.available)}
-      on:click={start}
+      on:click={tryStart}
     >
       {launching ? $_("install.starting") : $_("install.start")}
     </button>
   </div>
 </div>
+
+{#if warnOpen}
+  <Modal
+    variant="warning"
+    title={$_("install.warn.title")}
+    maxWidth={500}
+    confirmLabel={$_("install.warn.anyway")}
+    onConfirm={start}
+    onClose={() => (warnOpen = false)}
+  >
+    {#if internet === false}
+      <p class="mb-2">{$_("install.warn.internet")}</p>
+    {/if}
+    {#if clockBad}
+      <p class="mb-2">{$_("install.warn.clock", { values: { minutes: clockMinutes } })}</p>
+    {/if}
+    <p class="text-text-muted">{$_("install.warn.error100")}</p>
+  </Modal>
+{/if}
+
+{#if fixError}
+  <Modal variant="warning" title={$_("common.error")} onClose={() => (fixError = "")}>
+    <p class="whitespace-pre-line">{fixError}</p>
+  </Modal>
+{/if}
 
 {#if errorOpen}
   <Modal variant="warning" title={$_("install.notFound.title")} onClose={() => (errorOpen = false)}>

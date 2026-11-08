@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Show at startup",
+    "notes": "Help",
     "interfaceLanguage": "Language of this window",
     "switchToLight": "Switch to the light theme",
     "switchToDark": "Switch to the dark theme",
@@ -97,7 +98,22 @@
       "diskNone": "No disk found",
       "power": "Power",
       "powerOk": "Plugged in",
-      "powerBattery": "On battery: plug in the charger"
+      "powerBattery": "On battery: plug in the charger",
+      "clock": "Clock",
+      "clockOk": "Correct",
+      "clockOff": "{minutes} min off"
+    },
+    "clock": {
+      "hint": "The clock of this computer does not match the servers. The installer stops with error 100 when the time is wrong.",
+      "fix": "Fix the time",
+      "fixing": "Fixing the time"
+    },
+    "warn": {
+      "title": "The installation may fail",
+      "internet": "There is no connection to the Soplos servers.",
+      "clock": "The clock of this computer is {minutes} minutes off.",
+      "error100": "The installer downloads packages while it works, and stops with error 100 if it cannot.",
+      "anyway": "Install anyway"
     },
     "start": "Install Soplos",
     "starting": "Starting the installer",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "What happened?",
     "advanced": "Advanced: open a terminal in an installed system",
+    "hints": {
+      "boot": "Installs the bootloader again and makes the boot menu again. It only touches the boot partition and /boot.",
+      "password": "Changes the password of the user you choose. It does not touch their files.",
+      "update": "Rebuilds the start-up files of every kernel and makes the boot menu again. It only touches /boot."
+    },
     "scanning": "Looking for installed systems",
     "scanningHint": "This takes a few seconds.",
     "foundOne": "We found this system",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Change the language and the keyboard layout of the system. The session restarts by itself to apply them.",
     "languages": "Language",
+    "region": "Region",
     "keyboard": "Keyboard",
     "keyboardHint": "It follows the language you choose, but you can change it on its own.",
     "apply": "Apply and restart the session",

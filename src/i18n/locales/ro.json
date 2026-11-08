@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Afișează la pornire",
+    "notes": "Ajutor",
     "interfaceLanguage": "Limba acestei ferestre",
     "switchToLight": "Treci la tema deschisă",
     "switchToDark": "Treci la tema întunecată",
@@ -97,7 +98,22 @@
       "diskNone": "Nu s-a găsit niciun disc",
       "power": "Alimentare",
       "powerOk": "Conectat la priză",
-      "powerBattery": "Pe baterie: conectează încărcătorul"
+      "powerBattery": "Pe baterie: conectează încărcătorul",
+      "clock": "Ora sistemului",
+      "clockOk": "Corectă",
+      "clockOff": "Decalată cu {minutes} min"
+    },
+    "clock": {
+      "hint": "Ora acestui calculator nu coincide cu cea a serverelor. Programul de instalare se oprește cu eroarea 100 când ora este greșită.",
+      "fix": "Corectează ora",
+      "fixing": "Se corectează ora"
+    },
+    "warn": {
+      "title": "Instalarea poate eșua",
+      "internet": "Nu există conexiune la serverele Soplos.",
+      "clock": "Ora acestui calculator este decalată cu {minutes} minute.",
+      "error100": "Programul de instalare descarcă pachete în timp ce lucrează și se oprește cu eroarea 100 dacă nu poate.",
+      "anyway": "Instalează oricum"
     },
     "start": "Instalează Soplos",
     "starting": "Se pornește programul de instalare",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "Ce s-a întâmplat?",
     "advanced": "Avansat: deschide un terminal într-un sistem instalat",
+    "hints": {
+      "boot": "Reinstalează încărcătorul de pornire și recreează meniul de pornire. Atinge doar partiția de pornire și /boot.",
+      "password": "Schimbă parola utilizatorului ales. Nu atinge fișierele lui.",
+      "update": "Reconstruiește fișierele de pornire ale tuturor nucleelor și recreează meniul de pornire. Atinge doar /boot."
+    },
     "scanning": "Se caută sisteme instalate",
     "scanningHint": "Durează câteva secunde.",
     "foundOne": "Am găsit acest sistem",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Schimbă limba și aranjamentul tastaturii sistemului. Sesiunea repornește singură pentru a le aplica.",
     "languages": "Limbă",
+    "region": "Regiune",
     "keyboard": "Tastatură",
     "keyboardHint": "Urmează limba aleasă, dar o poți schimba separat.",
     "apply": "Aplică și repornește sesiunea",

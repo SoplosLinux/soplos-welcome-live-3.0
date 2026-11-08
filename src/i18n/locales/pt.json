@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Mostrar ao iniciar",
+    "notes": "Ajuda",
     "interfaceLanguage": "Idioma desta janela",
     "switchToLight": "Mudar para o tema claro",
     "switchToDark": "Mudar para o tema escuro",
@@ -97,7 +98,22 @@
       "diskNone": "Nenhum disco encontrado",
       "power": "Energia",
       "powerOk": "Ligado à corrente",
-      "powerBattery": "Com bateria: ligue o carregador"
+      "powerBattery": "Com bateria: ligue o carregador",
+      "clock": "Hora do sistema",
+      "clockOk": "Correta",
+      "clockOff": "Desajustada {minutes} min"
+    },
+    "clock": {
+      "hint": "A hora deste computador não coincide com a dos servidores. O instalador pára com o erro 100 quando a hora está errada.",
+      "fix": "Corrigir a hora",
+      "fixing": "A corrigir a hora"
+    },
+    "warn": {
+      "title": "A instalação pode falhar",
+      "internet": "Não há ligação aos servidores do Soplos.",
+      "clock": "A hora deste computador está desajustada {minutes} minutos.",
+      "error100": "O instalador descarrega pacotes enquanto trabalha e pára com o erro 100 se não puder.",
+      "anyway": "Instalar mesmo assim"
     },
     "start": "Instalar o Soplos",
     "starting": "A iniciar o instalador",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "O que aconteceu?",
     "advanced": "Avançado: abrir um terminal num sistema instalado",
+    "hints": {
+      "boot": "Volta a instalar o gestor de arranque e recria o menu de arranque. Só mexe na partição de arranque e em /boot.",
+      "password": "Muda a palavra-passe do utilizador que escolher. Não mexe nos ficheiros dele.",
+      "update": "Reconstrói os ficheiros de arranque de todos os kernels e recria o menu de arranque. Só mexe em /boot."
+    },
     "scanning": "A procurar sistemas instalados",
     "scanningHint": "Demora alguns segundos.",
     "foundOne": "Encontrámos este sistema",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Altere o idioma e a disposição do teclado do sistema. A sessão reinicia-se sozinha para os aplicar.",
     "languages": "Idioma",
+    "region": "Região",
     "keyboard": "Teclado",
     "keyboardHint": "Segue o idioma que escolher, mas pode alterá-lo em separado.",
     "apply": "Aplicar e reiniciar a sessão",

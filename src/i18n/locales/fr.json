@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Afficher au démarrage",
+    "notes": "Aide",
     "interfaceLanguage": "Langue de cette fenêtre",
     "switchToLight": "Passer au thème clair",
     "switchToDark": "Passer au thème sombre",
@@ -97,7 +98,22 @@
       "diskNone": "Aucun disque trouvé",
       "power": "Alimentation",
       "powerOk": "Branché sur le secteur",
-      "powerBattery": "Sur batterie : branchez le chargeur"
+      "powerBattery": "Sur batterie : branchez le chargeur",
+      "clock": "Heure du système",
+      "clockOk": "Correcte",
+      "clockOff": "Décalée de {minutes} min"
+    },
+    "clock": {
+      "hint": "L'heure de cet ordinateur ne correspond pas à celle des serveurs. L'installateur s'arrête avec l'erreur 100 quand l'heure est fausse.",
+      "fix": "Corriger l'heure",
+      "fixing": "Correction de l'heure"
+    },
+    "warn": {
+      "title": "L'installation peut échouer",
+      "internet": "Il n'y a pas de connexion aux serveurs de Soplos.",
+      "clock": "L'heure de cet ordinateur est décalée de {minutes} minutes.",
+      "error100": "L'installateur télécharge des paquets pendant son travail et s'arrête avec l'erreur 100 s'il ne peut pas.",
+      "anyway": "Installer quand même"
     },
     "start": "Installer Soplos",
     "starting": "Démarrage de l'installateur",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "Que s'est-il passé ?",
     "advanced": "Avancé : ouvrir un terminal dans un système installé",
+    "hints": {
+      "boot": "Réinstalle le chargeur de démarrage et recrée le menu de démarrage. Ne touche que la partition de démarrage et /boot.",
+      "password": "Change le mot de passe de l'utilisateur choisi. Ses fichiers ne sont pas touchés.",
+      "update": "Reconstruit les fichiers de démarrage de tous les noyaux et recrée le menu de démarrage. Ne touche que /boot."
+    },
     "scanning": "Recherche des systèmes installés",
     "scanningHint": "Cela prend quelques secondes.",
     "foundOne": "Nous avons trouvé ce système",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Changez la langue et la disposition du clavier du système. La session redémarre toute seule pour les appliquer.",
     "languages": "Langue",
+    "region": "Région",
     "keyboard": "Clavier",
     "keyboardHint": "Il suit la langue choisie, mais vous pouvez le changer séparément.",
     "apply": "Appliquer et redémarrer la session",

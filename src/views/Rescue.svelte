@@ -175,13 +175,14 @@
   ];
 </script>
 
-<div class="max-w-[640px]">
+<div>
   {#if phase === "choose"}
     <p class="text-[0.95rem] text-text-bright mb-3.5">{$_("rescue.question")}</p>
     <div class="flex flex-col gap-2.5">
       {#each problems as item}
+        <div>
         <button
-          class="flex items-center gap-3.5 px-4 py-3.5 rounded border border-border bg-surface text-left hover:border-primary transition-colors"
+          class="w-full flex items-center gap-3.5 px-4 py-3.5 rounded border border-border bg-surface text-left hover:border-primary transition-colors"
           on:click={() => begin(item.id)}
         >
           <div class="w-[42px] h-[42px] bg-surface-2 rounded-lg grid place-items-center text-primary shrink-0">
@@ -193,6 +194,7 @@
           </div>
           <ChevronRight size={18} class="ml-auto text-text-muted shrink-0" />
         </button>
+        </div>
       {/each}
     </div>
     <button

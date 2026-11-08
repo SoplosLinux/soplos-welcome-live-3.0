@@ -4,16 +4,12 @@
   import { open } from "@tauri-apps/plugin-shell";
   import { _ } from "svelte-i18n";
   import SystemCard from "../components/SystemCard.svelte";
-  import AppCard from "../components/AppCard.svelte";
   import { api } from "../lib/api";
   import {
     Cpu,
     MemoryStick,
     CircuitBoard,
     HardDrive,
-    Download,
-    Wrench,
-    LayoutGrid,
     Globe,
     MessageCircle,
     BookOpen,
@@ -103,42 +99,6 @@
     {#each system as item}
       <SystemCard icon={item.icon} label={item.label} value={item.value} />
     {/each}
-  </div>
-
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3.5 mb-4">
-    <AppCard icon={Download} title={$_("home.cards.install.title")} description={$_("home.cards.install.description")}>
-      <svelte:fragment slot="footer">
-        <span class="text-[0.72rem] px-2.5 py-1 rounded-full font-semibold whitespace-nowrap bg-success/15 text-success">
-          {$_("home.cards.install.badge")}
-        </span>
-        <button
-          class="bg-primary hover:bg-primary-hover text-text-bright px-3 py-1.5 rounded font-semibold text-[0.82rem]"
-          on:click={() => navigate("install")}
-        >
-          {$_("home.cards.install.action")}
-        </button>
-      </svelte:fragment>
-    </AppCard>
-    <AppCard icon={Wrench} title={$_("home.cards.rescue.title")} description={$_("home.cards.rescue.description")}>
-      <svelte:fragment slot="footer">
-        <button
-          class="ml-auto bg-primary hover:bg-primary-hover text-text-bright px-3 py-1.5 rounded font-semibold text-[0.82rem]"
-          on:click={() => navigate("rescue")}
-        >
-          {$_("home.cards.rescue.action")}
-        </button>
-      </svelte:fragment>
-    </AppCard>
-    <AppCard icon={LayoutGrid} title={$_("home.cards.tools.title")} description={$_("home.cards.tools.description")}>
-      <svelte:fragment slot="footer">
-        <button
-          class="ml-auto bg-primary hover:bg-primary-hover text-text-bright px-3 py-1.5 rounded font-semibold text-[0.82rem]"
-          on:click={() => navigate("tools")}
-        >
-          {$_("home.cards.tools.action")}
-        </button>
-      </svelte:fragment>
-    </AppCard>
   </div>
 
   <div class="flex flex-wrap items-center justify-center gap-2.5 mt-auto">

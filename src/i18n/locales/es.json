@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Mostrar al iniciar",
+    "notes": "Ayuda",
     "interfaceLanguage": "Idioma de esta ventana",
     "switchToLight": "Cambiar al tema claro",
     "switchToDark": "Cambiar al tema oscuro",
@@ -97,7 +98,22 @@
       "diskNone": "No se ha encontrado ningún disco",
       "power": "Energía",
       "powerOk": "Conectado a la corriente",
-      "powerBattery": "Con batería: conecta el cargador"
+      "powerBattery": "Con batería: conecta el cargador",
+      "clock": "Hora del sistema",
+      "clockOk": "Correcta",
+      "clockOff": "Desajustada {minutes} min"
+    },
+    "clock": {
+      "hint": "La hora de este equipo no coincide con la de los servidores. El instalador se detiene con el error 100 cuando la hora está mal.",
+      "fix": "Corregir la hora",
+      "fixing": "Corrigiendo la hora"
+    },
+    "warn": {
+      "title": "La instalación puede fallar",
+      "internet": "No hay conexión con los servidores de Soplos.",
+      "clock": "La hora de este equipo está desajustada {minutes} minutos.",
+      "error100": "El instalador descarga paquetes mientras trabaja y se detiene con el error 100 si no puede.",
+      "anyway": "Instalar de todos modos"
     },
     "start": "Instalar Soplos",
     "starting": "Iniciando el instalador",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "¿Qué ha pasado?",
     "advanced": "Avanzado: abrir una terminal en un sistema instalado",
+    "hints": {
+      "boot": "Vuelve a instalar el gestor de arranque y recrea el menú de arranque. Solo toca la partición de arranque y /boot.",
+      "password": "Cambia la contraseña del usuario que elijas. No toca sus archivos.",
+      "update": "Reconstruye los archivos de inicio de todos los kernels y recrea el menú de arranque. Solo toca /boot."
+    },
     "scanning": "Buscando sistemas instalados",
     "scanningHint": "Tarda unos segundos.",
     "foundOne": "Hemos encontrado este sistema",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Cambia el idioma y la distribución del teclado del sistema. La sesión se reinicia sola para aplicarlos.",
     "languages": "Idioma",
+    "region": "Región",
     "keyboard": "Teclado",
     "keyboardHint": "Sigue al idioma que elijas, pero puedes cambiarlo por separado.",
     "apply": "Aplicar y reiniciar la sesión",

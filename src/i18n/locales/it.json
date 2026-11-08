@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Mostra all'avvio",
+    "notes": "Aiuto",
     "interfaceLanguage": "Lingua di questa finestra",
     "switchToLight": "Passa al tema chiaro",
     "switchToDark": "Passa al tema scuro",
@@ -97,7 +98,22 @@
       "diskNone": "Nessun disco trovato",
       "power": "Alimentazione",
       "powerOk": "Collegato alla corrente",
-      "powerBattery": "A batteria: collega il caricabatterie"
+      "powerBattery": "A batteria: collega il caricabatterie",
+      "clock": "Ora di sistema",
+      "clockOk": "Corretta",
+      "clockOff": "Sfasata di {minutes} min"
+    },
+    "clock": {
+      "hint": "L'ora di questo computer non coincide con quella dei server. Il programma di installazione si ferma con l'errore 100 quando l'ora è sbagliata.",
+      "fix": "Correggi l'ora",
+      "fixing": "Correzione dell'ora"
+    },
+    "warn": {
+      "title": "L'installazione potrebbe fallire",
+      "internet": "Non c'è connessione ai server di Soplos.",
+      "clock": "L'ora di questo computer è sfasata di {minutes} minuti.",
+      "error100": "Il programma di installazione scarica pacchetti mentre lavora e si ferma con l'errore 100 se non può.",
+      "anyway": "Installa comunque"
     },
     "start": "Installa Soplos",
     "starting": "Avvio del programma di installazione",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "Cosa è successo?",
     "advanced": "Avanzate: apri un terminale in un sistema installato",
+    "hints": {
+      "boot": "Reinstalla il bootloader e ricrea il menu di avvio. Tocca solo la partizione di avvio e /boot.",
+      "password": "Cambia la password dell'utente scelto. Non tocca i suoi file.",
+      "update": "Ricostruisce i file di avvio di tutti i kernel e ricrea il menu di avvio. Tocca solo /boot."
+    },
     "scanning": "Ricerca dei sistemi installati",
     "scanningHint": "Ci vogliono pochi secondi.",
     "foundOne": "Abbiamo trovato questo sistema",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Cambia la lingua e la disposizione della tastiera del sistema. La sessione si riavvia da sola per applicarle.",
     "languages": "Lingua",
+    "region": "Regione",
     "keyboard": "Tastiera",
     "keyboardHint": "Segue la lingua che scegli, ma puoi cambiarla separatamente.",
     "apply": "Applica e riavvia la sessione",

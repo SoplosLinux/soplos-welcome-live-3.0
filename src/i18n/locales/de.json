@@ -16,6 +16,7 @@
   },
   "sidebar": {
     "showOnStartup": "Beim Start anzeigen",
+    "notes": "Hilfe",
     "interfaceLanguage": "Sprache dieses Fensters",
     "switchToLight": "Zum hellen Design wechseln",
     "switchToDark": "Zum dunklen Design wechseln",
@@ -97,7 +98,22 @@
       "diskNone": "Keine Festplatte gefunden",
       "power": "Stromversorgung",
       "powerOk": "Am Netz",
-      "powerBattery": "Im Akkubetrieb: Ladegerät anschließen"
+      "powerBattery": "Im Akkubetrieb: Ladegerät anschließen",
+      "clock": "Systemzeit",
+      "clockOk": "Richtig",
+      "clockOff": "{minutes} Min. daneben"
+    },
+    "clock": {
+      "hint": "Die Uhr dieses Computers stimmt nicht mit den Servern überein. Das Installationsprogramm bricht mit dem Fehler 100 ab, wenn die Zeit falsch ist.",
+      "fix": "Zeit korrigieren",
+      "fixing": "Zeit wird korrigiert"
+    },
+    "warn": {
+      "title": "Die Installation kann fehlschlagen",
+      "internet": "Es besteht keine Verbindung zu den Soplos-Servern.",
+      "clock": "Die Uhr dieses Computers geht um {minutes} Minuten falsch.",
+      "error100": "Das Installationsprogramm lädt während der Arbeit Pakete herunter und bricht mit dem Fehler 100 ab, wenn es das nicht kann.",
+      "anyway": "Trotzdem installieren"
     },
     "start": "Soplos installieren",
     "starting": "Installationsprogramm wird gestartet",
@@ -109,6 +125,11 @@
   "rescue": {
     "question": "Was ist passiert?",
     "advanced": "Erweitert: Terminal in einem installierten System öffnen",
+    "hints": {
+      "boot": "Installiert den Bootloader neu und erstellt das Boot-Menü neu. Betrifft nur die Boot-Partition und /boot.",
+      "password": "Ändert das Passwort des gewählten Benutzers. Seine Dateien bleiben unberührt.",
+      "update": "Baut die Startdateien aller Kernel neu auf und erstellt das Boot-Menü neu. Betrifft nur /boot."
+    },
     "scanning": "Installierte Systeme werden gesucht",
     "scanningHint": "Das dauert einige Sekunden.",
     "foundOne": "Wir haben dieses System gefunden",
@@ -221,6 +242,7 @@
   "language": {
     "description": "Ändere die Sprache und das Tastaturlayout des Systems. Die Sitzung startet von selbst neu, um sie anzuwenden.",
     "languages": "Sprache",
+    "region": "Region",
     "keyboard": "Tastatur",
     "keyboardHint": "Sie folgt der gewählten Sprache, kann aber getrennt geändert werden.",
     "apply": "Anwenden und Sitzung neu starten",

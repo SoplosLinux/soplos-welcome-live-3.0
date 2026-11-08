@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0-1-beta] - 2026-11-08
+
+### Added
+- The Install page checks what the installer needs before it starts, because without it the installer stops with error 100: a real connection to the servers of Soplos (name, connection and HTTPS, and not only a connection to 8.8.8.8), and the clock of the computer against the time the servers report. A clock that is more than five minutes off shows in the list, with a button that sets it from the servers, writes it to the hardware clock and turns on the network time.
+- Pressing Install with no connection, or with a wrong clock, asks first and says why the installer would fail; it can still be started.
+- Regions on the Language and keyboard page, in a drop-down list: twenty for Spanish (Spain and the countries of Latin America), eight for English (United States, United Kingdom, Australia, Canada, Ireland, New Zealand, South Africa, India), France, Belgium, Switzerland and Canada for French, Germany, Austria and Switzerland for German, Italy and Switzerland for Italian, and Portugal and Brazil for Portuguese. The region sets the locale of the system (`es_MX.UTF-8`, `fr_BE.UTF-8`, ...) and its formats, and the dictionary of the language is kept.
+- Keyboard layouts for Latin America (`latam`), Brazil (`br`), the United Kingdom (`gb`), Ireland (`ie`), Belgium (`be`), Switzerland (`ch`) and Canada (`ca`); each region proposes its own until the keyboard is chosen by hand.
+- Help on the Rescue page, as the notes of the other 3.0 programs: a Help button over the page (or Ctrl+I) opens a column beside it with a card for each of the three options, saying what it does and what it touches.
+- A banner with the image of the welcome screen, the icon and the title over every page but Home.
+
+### Changed
+- The pages have no top bar with their title any more; the strip over the content still moves the window and holds its buttons.
+- The pages are no longer limited to 640 pixels of width.
+- Region and keyboard are on the same row of the Language and keyboard page.
+
 ## [3.0.0-beta] - 2026-11-05
 
 First beta. The system rescue, the password change and the repair of the initramfs and GRUB were tested in a live session of Soplos Linux Tyson (Plasma, Wayland) in a virtual machine, on an installed system with the EFI partition, `/boot` and the root partition on btrfs apart.

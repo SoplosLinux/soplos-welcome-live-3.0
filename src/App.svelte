@@ -6,9 +6,12 @@
   import { api } from "./lib/api";
   import { progress } from "./lib/progress";
   import Sidebar from "./components/Sidebar.svelte";
-  import Header from "./components/Header.svelte";
   import WindowControls from "./components/WindowControls.svelte";
   import AboutDialog from "./components/AboutDialog.svelte";
+  import RescueNotes from "./components/RescueNotes.svelte";
+  import PageHero from "./components/PageHero.svelte";
+  import { showNotes } from "./lib/ui";
+  import { Eye } from "lucide-svelte";
   import Home from "./views/Home.svelte";
   import Install from "./views/Install.svelte";
   import Rescue from "./views/Rescue.svelte";
@@ -82,16 +85,24 @@
   setContext("openAbout", () => (aboutOpen = true));
   setContext("environment", () => envInfo);
 
-  $: activeTab = tabs.find((t) => t.id === active)!;
   $: ActiveView = views[active];
+  $: activeTab = tabs.find((t) => t.id === active)!;
 
-  // F1 -> About, Ctrl+Q -> quit.
+  // The pages that have notes beside them.
+  $: notesAvailable = active === "rescue";
+
+  // F1 -> About, Ctrl+I -> notes, Ctrl+Q -> quit.
   let aboutOpen = false;
 
   function handleKeydown(e: KeyboardEvent) {
     if (e.key === "F1") {
       e.preventDefault();
       aboutOpen = true;
+      return;
+    }
+    if (e.ctrlKey && (e.key === "i" || e.key === "I") && notesAvailable) {
+      e.preventDefault();
+      showNotes.update((v) => !v);
       return;
     }
     if (e.ctrlKey && (e.key === "q" || e.key === "Q")) {
@@ -110,17 +121,37 @@
     <div class="absolute right-2 top-[5px] z-40"><WindowControls {maximized} /></div>
   {/if}
 
+
   <div class="flex-1 flex flex-col overflow-hidden min-w-0">
-    {#if active !== "home"}
-      <Header title={activeTab.title} {frameless} />
+    <!-- No page has a top bar: the strip over the content holds the window
+         buttons and moves the window. -->
+    {#if frameless || notesAvailable}
+      <div class="h-7 shrink-0 flex items-center justify-end gap-2 {frameless ? 'pr-[116px]' : 'pr-7'}" data-tauri-drag-region>
+        {#if notesAvailable}
+          <button
+            class="flex items-center gap-1.5 rounded-md border bg-surface px-[9px] py-0.5 text-[0.78rem] hover:bg-surface-2 {$showNotes ? 'border-primary text-primary' : 'border-border text-text'}"
+            aria-pressed={$showNotes}
+            title="{$_('sidebar.notes')} (Ctrl+I)"
+            on:click={() => showNotes.update((v) => !v)}
+          >
+            <Eye size={13} />
+            {$_("sidebar.notes")}
+          </button>
+        {/if}
+      </div>
     {/if}
-    <!-- Home has no header: the strip over it (its old top padding) holds the
-         window buttons and moves the window. -->
-    {#if frameless && active === "home"}
-      <div class="h-7 shrink-0" data-tauri-drag-region></div>
-    {/if}
-    <div id="main-scroll" class="content-scroll flex-1 overflow-y-auto p-7 {frameless && active === 'home' ? 'pt-0' : ''}">
-      <svelte:component this={ActiveView} />
+    <div id="main-scroll" class="content-scroll flex-1 overflow-y-auto p-7 {frameless || notesAvailable ? 'pt-0' : ''}">
+      {#if active !== "home"}
+        <PageHero title={activeTab.title} icon={activeTab.icon} />
+      {/if}
+      {#if notesAvailable && $showNotes}
+        <div class="grid gap-4 items-start min-[900px]:grid-cols-[minmax(0,1fr)_290px]">
+          <svelte:component this={ActiveView} />
+          <RescueNotes />
+        </div>
+      {:else}
+        <svelte:component this={ActiveView} />
+      {/if}
     </div>
 
     <div class="h-1.5 bg-surface-2 overflow-hidden shrink-0" class:invisible={$progress === null}>

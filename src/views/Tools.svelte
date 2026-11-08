@@ -91,7 +91,7 @@
   }
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 max-w-[760px]">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
   <AppCard icon={HardDrive} title={$_("tools.gparted.title")} description={$_("tools.gparted.description")}>
     <svelte:fragment slot="footer">
       <span></span>

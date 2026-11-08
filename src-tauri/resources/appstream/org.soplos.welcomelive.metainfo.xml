@@ -198,6 +198,11 @@
   </screenshots>
 
   <releases>
+    <release version="3.0.0-1-beta" date="2026-11-08">
+      <description>
+        <p>The Install page checks the connection to the Soplos servers and the clock of the computer before the installer starts, because a missing connection or a wrong clock make it stop with error 100, and offers to fix the time. The Language and keyboard page has regions (Spain and Latin America, Brazil, Belgium, Austria, Australia and more) and keyboards for them. The Rescue page has a Help button that explains each option, and every page has a banner.</p>
+      </description>
+    </release>
     <release version="3.0.0-beta" date="2026-11-05">
       <description>
         <p>First beta. The system rescue, the password change and the repair of the initramfs and GRUB work in a live session of Soplos Linux Tyson.</p>
