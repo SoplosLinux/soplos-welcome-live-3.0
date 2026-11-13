@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "Montaggio del sistema",
-      "grub_install": "Riparazione del bootloader",
-      "update_grub": "Aggiornamento delle voci di avvio",
+      "boot_install": "Riparazione del bootloader",
+      "boot_update": "Aggiornamento delle voci di avvio",
       "initramfs": "Ricostruzione dei file di avvio",
       "password": "Salvataggio della nuova password",
       "unmount": "Chiusura del sistema"

@@ -71,9 +71,9 @@
   function plan(p: Problem): string[] {
     switch (p) {
       case "boot":
-        return ["mount", "grub_install", "update_grub", "unmount"];
+        return ["mount", "boot_install", "boot_update", "unmount"];
       case "update":
-        return ["mount", "initramfs", "update_grub", "unmount"];
+        return ["mount", "initramfs", "boot_update", "unmount"];
       case "password":
         return ["mount", "password", "unmount"];
       default:

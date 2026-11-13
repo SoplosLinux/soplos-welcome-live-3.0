@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "Mounting the system",
-      "grub_install": "Repairing the boot loader",
-      "update_grub": "Updating the boot entries",
+      "boot_install": "Repairing the boot loader",
+      "boot_update": "Updating the boot entries",
       "initramfs": "Rebuilding the start files",
       "password": "Saving the new password",
       "unmount": "Closing the system"

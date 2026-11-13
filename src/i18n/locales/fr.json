@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "Montage du système",
-      "grub_install": "Réparation du chargeur de démarrage",
-      "update_grub": "Mise à jour des entrées de démarrage",
+      "boot_install": "Réparation du chargeur de démarrage",
+      "boot_update": "Mise à jour des entrées de démarrage",
       "initramfs": "Reconstruction des fichiers de démarrage",
       "password": "Enregistrement du nouveau mot de passe",
       "unmount": "Fermeture du système"

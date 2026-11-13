@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "Montando el sistema",
-      "grub_install": "Reparando el gestor de arranque",
-      "update_grub": "Actualizando las entradas de arranque",
+      "boot_install": "Reparando el gestor de arranque",
+      "boot_update": "Actualizando las entradas de arranque",
       "initramfs": "Reconstruyendo los archivos de inicio",
       "password": "Guardando la contraseña nueva",
       "unmount": "Cerrando el sistema"

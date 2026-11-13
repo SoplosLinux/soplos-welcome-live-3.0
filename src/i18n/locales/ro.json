@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "Se montează sistemul",
-      "grub_install": "Se repară încărcătorul de pornire",
-      "update_grub": "Se actualizează intrările de pornire",
+      "boot_install": "Se repară încărcătorul de pornire",
+      "boot_update": "Se actualizează intrările de pornire",
       "initramfs": "Se reconstruiesc fișierele de pornire",
       "password": "Se salvează parola nouă",
       "unmount": "Se închide sistemul"

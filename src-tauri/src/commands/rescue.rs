@@ -174,7 +174,7 @@ fn read_system(root: &Path) -> Option<(String, Vec<String>)> {
 // === Mounting ===
 
 fn unmount_everything() {
-    for sub in ["dev/pts", "dev", "proc", "sys", "boot/efi", "efi", "boot", "home"] {
+    for sub in ["dev/pts", "dev", "proc", "sys/firmware/efi/efivars", "sys", "boot/efi", "efi", "boot", "home"] {
         let path = format!("{MOUNT_POINT}/{sub}");
         if is_mountpoint(&path) {
             let _ = sudo(&["umount", "-l", &path]);
@@ -329,6 +329,14 @@ pub fn rescue_mount(device: String, subvol: Option<String>) -> Result<String, St
             log.push_str(&format!("could not bind {source}: {e}\n"));
         }
     }
+    // The firmware variables are a mount of their own under /sys: without them
+    // grub-install, limine-install and bootctl cannot write the boot entry.
+    if Path::new("/sys/firmware/efi/efivars").is_dir() {
+        let path = format!("{MOUNT_POINT}/sys/firmware/efi/efivars");
+        if let Err(e) = sudo(&["mount", "--bind", "/sys/firmware/efi/efivars", &path]) {
+            log.push_str(&format!("could not bind the EFI variables: {e}\n"));
+        }
+    }
 
     if Path::new(&format!("{MOUNT_POINT}/etc")).exists() {
         let _ = sudo(&["cp", "/etc/resolv.conf", &format!("{MOUNT_POINT}/etc/resolv.conf")]);
@@ -385,30 +393,99 @@ fn valid_username(name: &str) -> bool {
     name.len() <= 32 && chars.all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_' || c == '-')
 }
 
+/// The boot loader of the installed system. Soplos Linux Installer purges
+/// GRUB when another one is chosen, so only one is ever there:
+///   - Limine: the settings limine-soplos saves at install time;
+///   - systemd-boot: its package installed and its folder on the ESP;
+///   - GRUB otherwise, as every Soplos installed by Calamares.
+fn installed_bootloader(esp: Option<&str>) -> &'static str {
+    if Path::new(&format!("{MOUNT_POINT}/etc/limine-soplos/install.conf")).exists() {
+        return "limine";
+    }
+    let status = fs::read_to_string(format!("{MOUNT_POINT}/var/lib/dpkg/status")).unwrap_or_default();
+    let systemd_boot = status
+        .split("\n\n")
+        .any(|block| block.lines().any(|l| l == "Package: systemd-boot") && block.lines().any(|l| l == "Status: install ok installed"));
+    let loader = esp.is_some_and(|e| Path::new(&format!("{MOUNT_POINT}{e}/loader")).is_dir());
+    if systemd_boot && loader {
+        "systemd-boot"
+    } else {
+        "grub"
+    }
+}
+
+/// Where the ESP of the installed system is mounted inside the chroot.
+fn esp_dir() -> Option<&'static str> {
+    ["/boot/efi", "/efi"].into_iter().find(|d| is_mountpoint(&format!("{MOUNT_POINT}{d}")))
+}
+
+/// The kernels of the installed system, from its /boot.
+fn installed_kernels() -> Vec<String> {
+    let mut versions: Vec<String> = fs::read_dir(format!("{MOUNT_POINT}/boot"))
+        .map(|d| {
+            d.flatten()
+                .filter_map(|e| e.file_name().into_string().ok())
+                .filter_map(|n| n.strip_prefix("vmlinuz-").map(str::to_string))
+                .collect()
+        })
+        .unwrap_or_default();
+    versions.sort();
+    versions
+}
+
 /// One repair step. The frontend calls them in order so its progress shows
-/// real work: "grub_install", "update_grub", "initramfs" or "password".
+/// real work: "boot_install", "boot_update", "initramfs" or "password". The
+/// two boot steps act on the boot loader the system has (GRUB, Limine or
+/// systemd-boot).
 #[tauri::command(async)]
 pub fn rescue_step(step: String, device: Option<String>, user: Option<String>, password: Option<String>) -> Result<String, String> {
     if !is_mountpoint(MOUNT_POINT) {
         return Err("not-mounted".to_string());
     }
     // The three steps that write into /boot need it, and /boot/efi, mounted.
-    if ["grub_install", "update_grub", "initramfs"].contains(&step.as_str()) {
+    if ["boot_install", "boot_update", "initramfs"].contains(&step.as_str()) {
         require_boot_mounts()?;
     }
+    let esp = esp_dir();
     match step.as_str() {
-        "grub_install" => {
-            let efi = is_mountpoint(&format!("{MOUNT_POINT}/boot/efi")) || is_mountpoint(&format!("{MOUNT_POINT}/efi"));
-            if efi {
-                let efi_dir = if is_mountpoint(&format!("{MOUNT_POINT}/boot/efi")) { "/boot/efi" } else { "/efi" };
-                in_chroot(&["grub-install", "--target=x86_64-efi", &format!("--efi-directory={efi_dir}"), "--recheck"])
-            } else {
-                let device = device.ok_or_else(|| "no device".to_string())?;
-                in_chroot(&["grub-install", &parent_disk(&device)])
+        "boot_install" => match installed_bootloader(esp) {
+            "limine" => in_chroot(&["limine-install", "--force"]),
+            "systemd-boot" => {
+                let esp = esp.ok_or_else(|| "no-esp".to_string())?;
+                in_chroot(&["bootctl", "install", &format!("--esp-path={esp}")])
             }
-        }
-        "update_grub" => in_chroot(&["update-grub"]),
-        "initramfs" => in_chroot(&["dracut", "--regenerate-all", "--force"]),
+            _ => {
+                if let Some(efi_dir) = esp {
+                    in_chroot(&["grub-install", "--target=x86_64-efi", &format!("--efi-directory={efi_dir}"), "--recheck"])
+                } else {
+                    let device = device.ok_or_else(|| "no device".to_string())?;
+                    in_chroot(&["grub-install", &parent_disk(&device)])
+                }
+            }
+        },
+        "boot_update" => match installed_bootloader(esp) {
+            "limine" => in_chroot(&["limine-update"]),
+            "systemd-boot" => {
+                // As Debian's own post-update hook does it: every kernel with
+                // the initrd of /boot.
+                let mut log = String::new();
+                for version in installed_kernels() {
+                    let kernel = format!("/boot/vmlinuz-{version}");
+                    let initrd = format!("/boot/initrd.img-{version}");
+                    let mut args = vec!["kernel-install", "add", version.as_str(), kernel.as_str()];
+                    if Path::new(&format!("{MOUNT_POINT}{initrd}")).exists() {
+                        args.push(initrd.as_str());
+                    }
+                    log.push_str(&in_chroot(&args)?);
+                }
+                Ok(log)
+            }
+            _ => in_chroot(&["update-grub"]),
+        },
+        // update-initramfs is dracut's own wrapper on Soplos: it runs the
+        // post-update hooks, which bring the initrd of systemd-boot on the
+        // ESP up to date too. `dracut` alone does not.
+        "initramfs" => in_chroot(&["update-initramfs", "-u", "-k", "all"]),
         "password" => {
             let user = user.ok_or_else(|| "no user".to_string())?;
             let password = password.ok_or_else(|| "no password".to_string())?;

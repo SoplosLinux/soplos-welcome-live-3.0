@@ -1,12 +1,7 @@
 {
-  "name": "Calamares",
+  "name": "Soplos Linux Installer",
   "paths": [
-    "/usr/bin/calamares",
-    "/usr/local/bin/calamares",
-    "/usr/bin/calamares-qt5"
+    "/usr/bin/soplos-linux-installer"
   ],
-  "env": {
-    "QT_STYLE_OVERRIDE": "fusion"
-  },
-  "needs_root": true
+  "needs_root": false
 }

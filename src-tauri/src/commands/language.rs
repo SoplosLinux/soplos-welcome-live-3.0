@@ -424,7 +424,7 @@ fn migrate_xdg_directories(locale: &str) {
         }
 
         if key == "XDG_DESKTOP_DIR" {
-            for name in ["calamares-install-soplos.desktop", "home.desktop", "trash.desktop"] {
+            for name in ["soplos-linux-installer.desktop", "calamares-install-soplos.desktop", "home.desktop", "trash.desktop"] {
                 let old_file = old_path.join(name);
                 let new_file = new_path.join(name);
                 if old_file.exists() && !new_file.exists() {

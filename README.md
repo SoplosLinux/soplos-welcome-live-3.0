@@ -22,7 +22,7 @@ This is a beta of the rewrite of the 2.x program (Python 3 and GTK3). It has bee
 
 ## Features
 
-- **Install**: launches the installer of the live session (Calamares today, SLI later). Before it starts, it shows the internet connection, the boot mode (UEFI or BIOS), the disks and whether the computer runs on battery. The installer is read from `installer.json`, so replacing it means replacing that file and not the code.
+- **Install**: launches the installer of the live session, Soplos Linux Installer (Calamares before 3.0). Before it starts, it shows the internet connection, the boot mode (UEFI or BIOS), the disks and whether the computer runs on battery. The installer is read from `installer.json`, so replacing it means replacing that file and not the code.
 - **Rescue**: repairs an installed system in plain language: the computer does not start, a forgotten password, a failure after an update. It finds the installed systems by itself, BTRFS subvolumes included, and mounts the boot, EFI and home partitions that the system's own `/etc/fstab` names. The repair runs step by step and the technical output stays folded under "Show details". The advanced option opens a terminal inside the installed system.
 - **Tools**: GParted, the hardware information, the screen resolution of the session (X11 and Plasma) and NumLock for the installed Tyron system.
 - **Language and keyboard**: changes the language and the keyboard layout of the system, moves the user folders to their new names and restarts the session. The keyboard follows the language but can be changed on its own, in the eight languages of the dictionaries.

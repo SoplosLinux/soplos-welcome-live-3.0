@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0-2-beta] - 2026-11-14
+
+### Changed
+- Install launches Soplos Linux Installer (`/usr/bin/soplos-linux-installer`,
+  as the live user) instead of Calamares: `installer.json` and the defaults
+  of the code. The package recommends `soplos-linux-installer` instead of
+  `calamares`, and its desktop icon follows the Desktop folder when the
+  language changes, as the one of Calamares did.
+- Rescue, "My computer does not start": it repairs the boot loader the
+  installed system has. GRUB as before (`grub-install` and `update-grub`),
+  Limine with `limine-install --force` and `limine-update`, systemd-boot with
+  `bootctl install` and `kernel-install add` for every kernel.
+- Rescue, "It broke after an update": the start files are rebuilt with
+  `update-initramfs -u -k all` instead of `dracut --regenerate-all --force`;
+  on Soplos it is dracut's own wrapper and it also runs the hooks that copy
+  the new files to the EFI partition for systemd-boot. The boot entries are
+  then updated for the boot loader the system has.
+- NumLock (Tyron): turning it off leaves the mark
+  `/etc/soplos-linux-installer/numlock-off` in the live session, which Soplos
+  Linux Installer reads; the switch shows that mark. It no longer edits the
+  configuration of Calamares.
+
+### Fixed
+- The EFI variables are mounted in the rescue chroot, so a repaired boot
+  loader can write its entry in the firmware again.
+
 ## [3.0.0-1-beta] - 2026-11-08
 
 ### Added

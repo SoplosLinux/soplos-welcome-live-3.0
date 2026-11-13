@@ -168,8 +168,8 @@
     },
     "steps": {
       "mount": "System wird eingehängt",
-      "grub_install": "Bootloader wird repariert",
-      "update_grub": "Booteinträge werden aktualisiert",
+      "boot_install": "Bootloader wird repariert",
+      "boot_update": "Booteinträge werden aktualisiert",
       "initramfs": "Startdateien werden neu erstellt",
       "password": "Neues Passwort wird gespeichert",
       "unmount": "System wird geschlossen"
