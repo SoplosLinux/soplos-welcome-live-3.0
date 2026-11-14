@@ -17,7 +17,8 @@
   "sidebar": {
     "showOnStartup": "Afficher au démarrage",
     "notes": "Aide",
-    "interfaceLanguage": "Langue de cette fenêtre",
+    "interfaceLanguage": "Langue du système",
+    "applyTitle": "Mettre le système en {language} ({region}) ?",
     "switchToLight": "Passer au thème clair",
     "switchToDark": "Passer au thème sombre",
     "aboutTooltip": "À propos de Soplos Welcome Live (F1)"

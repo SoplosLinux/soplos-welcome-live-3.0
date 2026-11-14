@@ -17,7 +17,8 @@
   "sidebar": {
     "showOnStartup": "Afișează la pornire",
     "notes": "Ajutor",
-    "interfaceLanguage": "Limba acestei ferestre",
+    "interfaceLanguage": "Limba sistemului",
+    "applyTitle": "Treceți sistemul în {language} ({region})?",
     "switchToLight": "Treci la tema deschisă",
     "switchToDark": "Treci la tema întunecată",
     "aboutTooltip": "Despre Soplos Welcome Live (F1)"

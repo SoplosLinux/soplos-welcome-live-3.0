@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0-3-beta] - 2026-11-14
+
+### Changed
+
+- The language switcher at the bottom of the sidebar does what the Language page does, since most people change the language there and never open the page: the window goes to the language at once and, after a confirmation, the system follows with the first region of the language and its keyboard (locale, the user's settings, the folders, the bookmarks, and the session restarts). Cancelling puts the window back in its language. Its label is now "System language". The regions and the steps are shared by both (`src/lib/systemLanguage.ts`).
+
 ## [3.0.0-2-beta] - 2026-11-14
 
 ### Changed

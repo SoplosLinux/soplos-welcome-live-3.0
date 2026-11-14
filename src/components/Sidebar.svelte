@@ -6,9 +6,44 @@
   import { Sun, Moon, Globe } from "lucide-svelte";
   import { _, locale } from "svelte-i18n";
   import { SUPPORTED_LOCALES, LOCALE_NAMES, setLocale, type SupportedLocale } from "../i18n";
+  import Modal from "./Modal.svelte";
+  import { REGIONS, applySystemLanguage } from "../lib/systemLanguage";
+
+  // Most people change the language here and never open the Language page,
+  // so this switcher does the same as that page: the window goes to the
+  // language at once, and after a confirmation the system follows, with the
+  // first region of the language and its keyboard (the page can still
+  // choose others). Cancelling puts the window back in its language.
+  let previous: SupportedLocale | null = null;
+  let pending: SupportedLocale | null = null;
+  let applying = false;
+  let stepLabel = "";
+  let errorText = "";
 
   function onLanguageChange(e: Event) {
-    setLocale((e.currentTarget as HTMLSelectElement).value as SupportedLocale);
+    const select = e.currentTarget as HTMLSelectElement;
+    previous = ($locale as SupportedLocale) ?? "en";
+    pending = select.value as SupportedLocale;
+    setLocale(pending);
+  }
+
+  function cancelLanguage() {
+    if (applying) return;
+    if (previous) setLocale(previous);
+    pending = null;
+  }
+
+  async function confirmLanguage() {
+    if (!pending) return;
+    const region = REGIONS[pending][0];
+    applying = true;
+    try {
+      await applySystemLanguage(pending, region.locale, region.layout, (label) => (stepLabel = label));
+    } catch (error) {
+      errorText = String(error);
+      applying = false;
+      pending = null;
+    }
   }
 
   export let tabs: { id: string; icon: ComponentType; label: string }[];
@@ -108,6 +143,7 @@
         class="appearance-none flex-1 min-w-0 bg-surface-2 border border-border rounded px-1.5 py-1 text-[0.68rem] text-text-bright outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
         value={$locale}
         title={$_("sidebar.interfaceLanguage")}
+        disabled={applying}
         on:change={onLanguageChange}
       >
         {#each SUPPORTED_LOCALES as code}
@@ -134,3 +170,23 @@
     </div>
   </div>
 </aside>
+
+{#if pending}
+  <Modal
+    variant="confirm"
+    title={$_("sidebar.applyTitle", { values: { language: LOCALE_NAMES[pending], region: REGIONS[pending][0].label } })}
+    confirmLabel={applying ? stepLabel : $_("language.apply")}
+    confirmDisabled={applying}
+    onClose={cancelLanguage}
+    onConfirm={confirmLanguage}
+  >
+    <p>{$_("language.description")}</p>
+    <p class="mt-2 text-text-muted">{$_("language.restartNote")}</p>
+  </Modal>
+{/if}
+
+{#if errorText}
+  <Modal variant="warning" title={$_("common.error")} onClose={() => (errorText = "")}>
+    <p class="whitespace-pre-line">{errorText}</p>
+  </Modal>
+{/if}

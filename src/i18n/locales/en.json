@@ -17,7 +17,8 @@
   "sidebar": {
     "showOnStartup": "Show at startup",
     "notes": "Help",
-    "interfaceLanguage": "Language of this window",
+    "interfaceLanguage": "System language",
+    "applyTitle": "Put the system in {language} ({region})?",
     "switchToLight": "Switch to the light theme",
     "switchToDark": "Switch to the dark theme",
     "aboutTooltip": "About Soplos Welcome Live (F1)"

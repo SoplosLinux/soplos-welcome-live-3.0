@@ -198,6 +198,11 @@
   </screenshots>
 
   <releases>
+    <release version="3.0.0-3-beta" date="2026-11-14">
+      <description>
+        <p>The language switcher at the bottom of the sidebar changes the language of the system, as the Language page does, after a confirmation, and not only the language of the window.</p>
+      </description>
+    </release>
     <release version="3.0.0-2-beta" date="2026-11-14">
       <description>
         <p>Install launches Soplos Linux Installer, the new installer of Soplos, instead of Calamares. The rescue repairs the boot loader the system has, GRUB, Limine or systemd-boot, and rebuilds the start files so systemd-boot gets them too. Turning NumLock off in the tools works with the new installer.</p>
