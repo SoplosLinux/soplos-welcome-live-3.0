@@ -10,7 +10,7 @@
   import AboutDialog from "./components/AboutDialog.svelte";
   import RescueNotes from "./components/RescueNotes.svelte";
   import PageHero from "./components/PageHero.svelte";
-  import { showNotes } from "./lib/ui";
+  import { modalDepth, showNotes } from "./lib/ui";
   import { Eye } from "lucide-svelte";
   import Home from "./views/Home.svelte";
   import Install from "./views/Install.svelte";
@@ -21,10 +21,10 @@
 
   $: tabs = [
     { id: "home", icon: HomeIcon, label: $_("app.tabs.home.label"), title: $_("app.tabs.home.title") },
+    { id: "language", icon: Keyboard, label: $_("app.tabs.language.label"), title: $_("app.tabs.language.title") },
     { id: "install", icon: Download, label: $_("app.tabs.install.label"), title: $_("app.tabs.install.title") },
     { id: "rescue", icon: Wrench, label: $_("app.tabs.rescue.label"), title: $_("app.tabs.rescue.title") },
     { id: "tools", icon: LayoutGrid, label: $_("app.tabs.tools.label"), title: $_("app.tabs.tools.title") },
-    { id: "language", icon: Keyboard, label: $_("app.tabs.language.label"), title: $_("app.tabs.language.title") },
   ];
 
   const views: Record<string, ComponentType> = {
@@ -91,23 +91,37 @@
   // The pages that have notes beside them.
   $: notesAvailable = active === "rescue";
 
-  // F1 -> About, Ctrl+I -> notes, Ctrl+Q -> quit.
+  // F1 -> About, F5 -> reload the page, Ctrl+I -> notes, Ctrl+Q -> quit,
+  // Ctrl+Tab / Ctrl+Shift+Tab -> next or previous page. Quiet while a dialog
+  // is open (it closes itself with Esc/Enter).
   let aboutOpen = false;
+  // Bumped by F5: the page on screen is built again and reads its data anew.
+  let reloadKey = 0;
 
   function handleKeydown(e: KeyboardEvent) {
+    if (aboutOpen || $modalDepth > 0) return;
     if (e.key === "F1") {
       e.preventDefault();
       aboutOpen = true;
       return;
     }
-    if (e.ctrlKey && (e.key === "i" || e.key === "I") && notesAvailable) {
+    if (e.key === "F5") {
       e.preventDefault();
-      showNotes.update((v) => !v);
+      // Never in the middle of a job (an installer check, a repair, a language change).
+      if ($progress === null) reloadKey += 1;
       return;
     }
-    if (e.ctrlKey && (e.key === "q" || e.key === "Q")) {
+    if (!e.ctrlKey) return;
+    if (e.key === "i" || e.key === "I") {
+      e.preventDefault();
+      if (notesAvailable) showNotes.update((v) => !v);
+    } else if (e.key === "q" || e.key === "Q") {
       e.preventDefault();
       getCurrentWindow().close();
+    } else if (e.code === "Tab") {
+      e.preventDefault();
+      const i = tabs.findIndex((t) => t.id === active);
+      select(tabs[(i + (e.shiftKey ? -1 : 1) + tabs.length) % tabs.length].id);
     }
   }
 </script>
@@ -144,14 +158,16 @@
       {#if active !== "home"}
         <PageHero title={activeTab.title} icon={activeTab.icon} />
       {/if}
-      {#if notesAvailable && $showNotes}
-        <div class="grid gap-4 items-start min-[900px]:grid-cols-[minmax(0,1fr)_290px]">
+      {#key reloadKey}
+        {#if notesAvailable && $showNotes}
+          <div class="grid gap-4 items-start min-[900px]:grid-cols-[minmax(0,1fr)_290px]">
+            <svelte:component this={ActiveView} />
+            <RescueNotes />
+          </div>
+        {:else}
           <svelte:component this={ActiveView} />
-          <RescueNotes />
-        </div>
-      {:else}
-        <svelte:component this={ActiveView} />
-      {/if}
+        {/if}
+      {/key}
     </div>
 
     <div class="h-1.5 bg-surface-2 overflow-hidden shrink-0" class:invisible={$progress === null}>

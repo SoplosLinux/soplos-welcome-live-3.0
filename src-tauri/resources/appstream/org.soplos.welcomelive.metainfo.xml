@@ -198,6 +198,11 @@
   </screenshots>
 
   <releases>
+    <release version="3.0.0" date="2026-11-17">
+      <description>
+        <p>First stable release. The Language page comes right after Home in the sidebar.</p>
+      </description>
+    </release>
     <release version="3.0.0-3-beta" date="2026-11-14">
       <description>
         <p>The language switcher at the bottom of the sidebar changes the language of the system, as the Language page does, after a confirmation, and not only the language of the window.</p>

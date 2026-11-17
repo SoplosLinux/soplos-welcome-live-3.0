@@ -1,4 +1,4 @@
-.TH "SOPLOS-WELCOME-LIVE" "1" "2026-10-31" "Soplos Linux" "User Commands"
+.TH "SOPLOS-WELCOME-LIVE" "1" "2026-11-17" "Soplos Linux" "User Commands"
 .SH NAME
 soplos-welcome-live \- Welcome screen of the Soplos Linux live session
 .SH SYNOPSIS
@@ -12,6 +12,10 @@ Rust, and Svelte, it works on Xfce (Tyron), KDE Plasma (Tyson) and GNOME
 .B Home:
 the edition, the processor, the memory, the graphics card and the storage of
 the machine, and shortcuts to the other sections.
+.IP \[bu]
+.B Language:
+changes the language and the keyboard layout of the system, moves the user
+folders to their new names and restarts the session.
 .IP \[bu]
 .B Install:
 launches the installer of the live session and shows what to check before
@@ -30,10 +34,6 @@ names. The advanced option opens a terminal inside the installed system.
 .B Tools:
 GParted, the hardware information, the screen resolution of the session
 (X11 and Plasma) and NumLock for the installed Tyron system.
-.IP \[bu]
-.B Language:
-changes the language and the keyboard layout of the system, moves the user
-folders to their new names and restarts the session.
 .P
 The interface is available in English, Spanish, German, French, Italian,
 Portuguese, Romanian and Russian. It starts in the system language and falls
@@ -43,6 +43,22 @@ The window never runs as root. The live user runs the system commands with
 .BR sudo (8)
 without a password, and GParted is opened through
 .BR pkexec (1).
+.SH KEYBOARD SHORTCUTS
+.TP
+.B F1
+About.
+.TP
+.B F5
+Reload the page, except while a job is running.
+.TP
+.B Ctrl+I
+Show or hide the notes of the page (Rescue).
+.TP
+.B Ctrl+Tab, Ctrl+Shift+Tab
+Next or previous page.
+.TP
+.B Ctrl+Q
+Quit.
 .SH FILES
 .TP
 .I /usr/share/soplos-welcome-live/installer.json

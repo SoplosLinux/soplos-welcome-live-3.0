@@ -2,7 +2,9 @@
   import { fade, scale } from "svelte/transition";
   import { _ } from "svelte-i18n";
   import { Info, HelpCircle, AlertTriangle, ShieldAlert } from "lucide-svelte";
+  import { onMount } from "svelte";
   import { autofocus } from "../lib/autofocus";
+  import { modalDepth } from "../lib/ui";
 
   // info: single OK button. confirm/warning/danger: Cancel + confirm button
   // (danger and warning also tint the header icon and the confirm button).
@@ -16,6 +18,12 @@
   // Choice popups put their own buttons in the body and skip the footer.
   export let showFooter = true;
   export let confirmDisabled = false;
+
+  // Counted while open, so the window's shortcuts wait until it closes.
+  onMount(() => {
+    modalDepth.update((n) => n + 1);
+    return () => modalDepth.update((n) => n - 1);
+  });
 
   const icons = { info: Info, confirm: HelpCircle, warning: AlertTriangle, danger: ShieldAlert };
   const iconTint = {

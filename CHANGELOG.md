@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0] - 2026-11-17
+
+First stable release.
+
+### Added
+
+- The keyboard shortcuts of the other Soplos 3.0 programs: F5 reloads the page (not while a job is running) and Ctrl+Tab / Ctrl+Shift+Tab go to the next or previous page, besides F1, Ctrl+I and Ctrl+Q. They stay quiet while a dialog is open, so nothing changes page or quits behind a confirmation. Listed in the README and the manual page.
+
+### Changed
+
+- The Language page comes right after Home in the sidebar, before Install, Rescue and Tools: the language is the first thing to choose in a live session.
+
 ## [3.0.0-3-beta] - 2026-11-14
 
 ### Changed
