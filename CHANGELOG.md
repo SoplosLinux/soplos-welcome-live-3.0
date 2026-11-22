@@ -16,6 +16,7 @@ First stable release.
 ### Changed
 
 - The Language page comes right after Home in the sidebar, before Install, Rescue and Tools: the language is the first thing to choose in a live session.
+- New screenshots of the eight views, in English and in the order of the sidebar: Home, Language and keyboard, Install, the three steps of Rescue and Tools.
 
 ## [3.0.0-3-beta] - 2026-11-14
 

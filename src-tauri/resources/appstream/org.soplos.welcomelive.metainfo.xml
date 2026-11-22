@@ -142,6 +142,17 @@
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot02.png</image>
+      <caption>Language and keyboard: the language, the region and the layout of the session</caption>
+      <caption xml:lang="es">Idioma y teclado: el idioma, la región y la distribución de la sesión</caption>
+      <caption xml:lang="fr">Langue et clavier : la langue, la région et la disposition de la session</caption>
+      <caption xml:lang="de">Sprache und Tastatur: die Sprache, die Region und das Layout der Sitzung</caption>
+      <caption xml:lang="pt">Idioma e teclado: o idioma, a região e a disposição da sessão</caption>
+      <caption xml:lang="it">Lingua e tastiera: la lingua, la regione e la disposizione della sessione</caption>
+      <caption xml:lang="ro">Limbă și tastatură: limba, regiunea și aranjarea sesiunii</caption>
+      <caption xml:lang="ru">Язык и клавиатура: язык, регион и раскладка сессии</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot03.png</image>
       <caption>Install: what to check before starting the installer</caption>
       <caption xml:lang="es">Instalar: qué comprobar antes de iniciar el instalador</caption>
       <caption xml:lang="fr">Installer : ce qu'il faut vérifier avant de lancer l'installateur</caption>
@@ -152,7 +163,7 @@
       <caption xml:lang="ru">Установка: что проверить перед запуском установщика</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot03.png</image>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot04.png</image>
       <caption>Rescue: say what happened, in plain words</caption>
       <caption xml:lang="es">Rescate: di qué ha pasado, con palabras normales</caption>
       <caption xml:lang="fr">Secours : dites ce qui s'est passé, avec des mots simples</caption>
@@ -163,7 +174,18 @@
       <caption xml:lang="ru">Восстановление: опишите, что случилось, простыми словами</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot04.png</image>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot05.png</image>
+      <caption>Rescue: the installed system found by itself</caption>
+      <caption xml:lang="es">Rescate: el sistema instalado encontrado por sí solo</caption>
+      <caption xml:lang="fr">Secours : le système installé trouvé tout seul</caption>
+      <caption xml:lang="de">Rettung: das installierte System selbst gefunden</caption>
+      <caption xml:lang="pt">Resgate: o sistema instalado encontrado sozinho</caption>
+      <caption xml:lang="it">Ripristino: il sistema installato trovato da solo</caption>
+      <caption xml:lang="ro">Salvare: sistemul instalat găsit singur</caption>
+      <caption xml:lang="ru">Восстановление: установленная система найдена сама</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot06.png</image>
       <caption>Rescue: the repair, step by step</caption>
       <caption xml:lang="es">Rescate: la reparación, paso a paso</caption>
       <caption xml:lang="fr">Secours : la réparation, étape par étape</caption>
@@ -174,26 +196,26 @@
       <caption xml:lang="ru">Восстановление: починка шаг за шагом</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot05.png</image>
-      <caption>Tools: GParted, the hardware and the screen resolution</caption>
-      <caption xml:lang="es">Herramientas: GParted, el hardware y la resolución de pantalla</caption>
-      <caption xml:lang="fr">Outils : GParted, le matériel et la résolution de l'écran</caption>
-      <caption xml:lang="de">Werkzeuge: GParted, die Hardware und die Bildschirmauflösung</caption>
-      <caption xml:lang="pt">Ferramentas: GParted, o hardware e a resolução do ecrã</caption>
-      <caption xml:lang="it">Strumenti: GParted, l'hardware e la risoluzione dello schermo</caption>
-      <caption xml:lang="ro">Instrumente: GParted, hardware-ul și rezoluția ecranului</caption>
-      <caption xml:lang="ru">Инструменты: GParted, оборудование и разрешение экрана</caption>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot07.png</image>
+      <caption>Rescue: done, and the computer can start again</caption>
+      <caption xml:lang="es">Rescate: listo, y el equipo puede arrancar de nuevo</caption>
+      <caption xml:lang="fr">Secours : terminé, et l'ordinateur peut redémarrer</caption>
+      <caption xml:lang="de">Rettung: fertig, und der Rechner kann wieder starten</caption>
+      <caption xml:lang="pt">Resgate: concluído, e o computador pode arrancar de novo</caption>
+      <caption xml:lang="it">Ripristino: fatto, e il computer può riavviarsi</caption>
+      <caption xml:lang="ro">Salvare: gata, iar calculatorul poate porni din nou</caption>
+      <caption xml:lang="ru">Восстановление: готово, компьютер снова загрузится</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot06.png</image>
-      <caption>Language and keyboard of the session</caption>
-      <caption xml:lang="es">Idioma y teclado de la sesión</caption>
-      <caption xml:lang="fr">Langue et clavier de la session</caption>
-      <caption xml:lang="de">Sprache und Tastatur der Sitzung</caption>
-      <caption xml:lang="pt">Idioma e teclado da sessão</caption>
-      <caption xml:lang="it">Lingua e tastiera della sessione</caption>
-      <caption xml:lang="ro">Limba și tastatura sesiunii</caption>
-      <caption xml:lang="ru">Язык и клавиатура сессии</caption>
+      <image>https://raw.githubusercontent.com/SoplosLinux/soplos-welcome-live-3.0/main/src-tauri/resources/screenshots/screenshot08.png</image>
+      <caption>Tools: GParted, the hardware, the screen resolution and NumLock</caption>
+      <caption xml:lang="es">Herramientas: GParted, el hardware, la resolución de pantalla y NumLock</caption>
+      <caption xml:lang="fr">Outils : GParted, le matériel, la résolution de l'écran et NumLock</caption>
+      <caption xml:lang="de">Werkzeuge: GParted, die Hardware, die Bildschirmauflösung und NumLock</caption>
+      <caption xml:lang="pt">Ferramentas: GParted, o hardware, a resolução do ecrã e NumLock</caption>
+      <caption xml:lang="it">Strumenti: GParted, l'hardware, la risoluzione dello schermo e NumLock</caption>
+      <caption xml:lang="ro">Instrumente: GParted, hardware-ul, rezoluția ecranului și NumLock</caption>
+      <caption xml:lang="ru">Инструменты: GParted, оборудование, разрешение экрана и NumLock</caption>
     </screenshot>
   </screenshots>
 

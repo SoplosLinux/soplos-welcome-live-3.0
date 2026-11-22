@@ -11,10 +11,11 @@ The welcome screen of the Soplos Linux live session.
 
 Install Soplos, repair a system you already have without knowing any command, partition disks and change the language and keyboard of the session. It runs on Xfce (Tyron), Plasma (Tyson) and GNOME (Boro), on X11 and Wayland.
 
-| ![Home](src-tauri/resources/screenshots/screenshot01.png) Home: the edition, the hardware and the three things you can do | ![Install](src-tauri/resources/screenshots/screenshot02.png) Install: what to check before starting the installer |
+| ![Home](src-tauri/resources/screenshots/screenshot01.png) Home: the edition, the hardware and the three things you can do | ![Language and keyboard](src-tauri/resources/screenshots/screenshot02.png) Language and keyboard: the language, the region and the layout of the session |
 |:---:|:---:|
-| ![Rescue](src-tauri/resources/screenshots/screenshot03.png) Rescue: say what happened, in plain words | ![Repair](src-tauri/resources/screenshots/screenshot04.png) Rescue: the repair, step by step |
-| ![Tools](src-tauri/resources/screenshots/screenshot05.png) Tools: GParted, the hardware and the screen resolution | ![Language](src-tauri/resources/screenshots/screenshot06.png) Language and keyboard of the session |
+| ![Install](src-tauri/resources/screenshots/screenshot03.png) Install: what to check before starting the installer | ![Rescue](src-tauri/resources/screenshots/screenshot04.png) Rescue: say what happened, in plain words |
+| ![Rescue: the system found](src-tauri/resources/screenshots/screenshot05.png) Rescue: the installed system found by itself | ![Repair](src-tauri/resources/screenshots/screenshot06.png) Rescue: the repair, step by step |
+| ![Rescue: done](src-tauri/resources/screenshots/screenshot07.png) Rescue: done, and the computer can start again | ![Tools](src-tauri/resources/screenshots/screenshot08.png) Tools: GParted, the hardware, the screen resolution and NumLock |
 
 ## Status
 
